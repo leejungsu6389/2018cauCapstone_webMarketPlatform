@@ -3,7 +3,6 @@
 	width: 250px;
 }
 .outerTable{
-	position: fixed;
 	top: 0;
 	left: 0px;
 }
@@ -12,6 +11,7 @@
 </style>
 
 <body>
+
 
 
 <table class ="outerTable">
@@ -32,9 +32,7 @@
                         <! server_test.php 파일로 post>
 						<form action="server_test.php" method ="post">
 						<br>
-
-                
-
+              
 						<br><b>[Item Management: Add]</b><br>
 
                         <! 설계문서 인터페이스 설계 참고>
@@ -81,8 +79,6 @@
 
 
 
-
-
                         <! Admin Page의 Item management 모듈의 Edit 기능>
                         <form action="server_test.php" method="post">
                             <br>
@@ -116,8 +112,6 @@
                             <input type="submit" value="서버에 요청">
                             <br>
                         </form>
-
-
 
 
 
@@ -160,19 +154,6 @@
 
 
 
-                        <! 여기까지가 관리자 페이지 - item Management 모듈에 대한 서버로의 송신 기능코드입니다>
-
-                        <! 위에 든 예시 처럼 아래 모듈들 작성 부탁드릴게요>
-                        <! 애매하거나 잘 모르시겠으면 물어보시거나 그냥 비워두시면 됩니다>
-                        <! 어떤 요소가 필요한지는 주석 달아놓을게요>
-
-
-                        <! 설계문서 인터페이스, DB 설계 보시면서 하시면 됩니다>
-
-
-
-
-
                         <! ============================================================>
                         <! ============================================================>
                         <! Admin - Membership Management Module>
@@ -201,16 +182,42 @@
                         </form>
 
 
+
                         <! Membership Management - ret Info>
                         <! 사용자 ID만 넘기면 됩니다>
+                        <form action="server_test.php" method="post">
+                            <br>
+
+                            <br><b>[Membership Management: Ret_Info]</b><br>
+                            <input type="hidden" name="_WHAT_TO_DO" value="RETINFO_MEMBERSHIP">
+
+
+                            <label> userID: </label>
+                            <input type="text" name="_userID" value="">
+                            <br>
+
+                            <input type="submit" value="서버에 요청">
+                            <br>
+                        </form>
+
 
 
                         <! Membership Management - ban>
                         <! 사용자 ID만 넘기면 됩니다>
+                        <form action="server_test.php" method="post">
+                            <br>
+
+                            <br><b>[Membership Management: Ban]</b><br>
+                            <input type="hidden" name="_WHAT_TO_DO" value="BAN_MEMBERSHIP">
 
 
+                            <label> userID: </label>
+                            <input type="text" name="_userID" value="">
+                            <br>
 
-
+                            <input type="submit" value="서버에 요청">
+                            <br>
+                        </form>
 
 
 
@@ -219,7 +226,6 @@
                         <! ============================================================>
                         <! ============================================================>
                         <! Admin - Design Module>
-
                         <! Design - Edit Design>
                         <! Design - Edit Menu>
 
@@ -234,10 +240,39 @@
 
                         <! Order Management - See Order>
                         <! 왓투두 - See Order, 주문번호 넘기기>
+                        <form action="server_test.php" method="post">
+                            <br>
+
+                            <br><b>[Order Management: See_Order]</b><br>
+                            <input type="hidden" name="_WHAT_TO_DO" value="SEEORDER_ORDER">
+
+
+                            <label> orderID: </label>
+                            <input type="text" name="_orderID" value="">
+                            <br>
+
+                            <input type="submit" value="서버에 요청">
+                            <br>
+                        </form>
+
+
 
                         <! Order Management - See Info>
                         <! 왓투두 - See Order, 주문번호 넘기기>
+                        <form action="server_test.php" method="post">
+                            <br>
 
+                            <br><b>[Order Management: See_Info]</b><br>
+                            <input type="hidden" name="_WHAT_TO_DO" value="SEEINFO_ORDER">
+
+
+                            <label> orderID: </label>
+                            <input type="text" name="_orderID" value="">
+                            <br>
+
+                            <input type="submit" value="서버에 요청">
+                            <br>
+                        </form>
 
 
                         <! 주문 진행단계인데 이거 세개는 비워주세요 제가 따로 수정할게요>
@@ -259,16 +294,151 @@
                         
                         <! Account - Join>
                         <! 사용자 모든 정보 전송>
+                        <form action="server_test.php" method="post">
+                            <br>
+
+                            <br><b>[Account: Join]</b><br>
+                            <input type="hidden" name="_WHAT_TO_DO" value="JOIN_ACCOUNT">
+
+
+                            <label> userID: </label>
+                            <input type="text" name="_userID" value="">
+                            <br>
+
+                            <label> pswd: </label>
+                            <input type="text" name="_pswd" value="">
+                            <br>
+
+                            <label> name: </label>
+                            <input type="text" name="_name" value="">
+                            <br>
+
+                            <label> joined_date: </label>
+                            <input type="text" name="_joined_date" value="">
+                            <br>
+
+                            <label> zipCode: </label>
+                            <input type="text" name="_zipCode" value="">
+                            <br>
+
+                            <label> address: </label>
+                            <input type="text" name="_address" value="">
+                            <br>
+
+                            <label> email: </label>
+                            <input type="text" name="_email" value="">
+                            <br>
+
+                            <label> telNum: </label>
+                            <input type="text" name="_telNum" value="">
+                            <br>
+
+                            <label> mileage: </label>
+                            <input type="text" name="_mileage" value="">
+                            <br>
+
+                            <input type="submit" value="서버에 요청">
+                            <br>
+                        </form>
+
+
 
                         <! Account - Login>
                         <! 사용자 ID, 비밀번호 전송>
+                        <form action="server_test.php" method="post">
+                            <br>
+
+                            <br><b>[Account: Login]</b><br>
+                            <input type="hidden" name="_WHAT_TO_DO" value="LOGIN_ACCOUNT">
+
+
+                            <label> userID: </label>
+                            <input type="text" name="_userID" value="">
+                            <br>
+
+                            <label> pswd: </label>
+                            <input type="text" name="_pswd" value="">
+                            <br>
+
+                            <input type="submit" value="서버에 요청">
+                            <br>
+                        </form>
 
                         <! Account - Edit>
                         <! 사용자 모든 정보 전송>
+                        <form action="server_test.php" method="post">
+                            <br>
+
+                            <br><b>[Account: Edit]</b><br>
+                            <input type="hidden" name="_WHAT_TO_DO" value="EDIT_ACCOUNT">
+
+
+                            <label> userID: </label>
+                            <input type="text" name="_userID" value="">
+                            <br>
+
+                            <label> pswd: </label>
+                            <input type="text" name="_pswd" value="">
+                            <br>
+
+
+
+                            <label> name: </label>
+                            <input type="text" name="_name" value="">
+                            <br>
+
+                            <label> joined_date: </label>
+                            <input type="text" name="_joined_date" value="">
+                            <br>
+
+                            <label> zipCode: </label>
+                            <input type="text" name="_zipCode" value="">
+                            <br>
+
+                            <label> address: </label>
+                            <input type="text" name="_address" value="">
+                            <br>
+
+                            <label> email: </label>
+                            <input type="text" name="_email" value="">
+                            <br>
+
+                            <label> telNum: </label>
+                            <input type="text" name="_telNum" value="">
+                            <br>
+
+                            <label> mileage: </label>
+                            <input type="text" name="_mileage" value="">
+                            <br>
+
+
+
+                            <input type="submit" value="서버에 요청">
+                            <br>
+                        </form>
+
+
 
                         <! Account - Quit>
-                        <! 사용자 ID만 전송>
+                        <! 사용자 ID, 비번 전송>
+                        <form action="server_test.php" method="post">
+                            <br>
 
+                            <br><b>[Account: Quit]</b><br>
+                            <input type="hidden" name="_WHAT_TO_DO" value="QUIT_ACCOUNT">
+
+
+                            <label> userID: </label>
+                            <input type="text" name="_userID" value="">
+                            <br>
+
+                            <label> pswd: </label>
+                            <input type="text" name="_pswd" value="">
+                            <br>
+
+                            <input type="submit" value="서버에 요청">
+                            <br>
+                        </form>
 
 
                         <! Search 모듈 제가 할테니 안하셔도 됩니다>
@@ -285,15 +455,42 @@
 
                         <! order - check Order>
                         <! 주문번호만 전송>
+                        <form action="server_test.php" method="post">
+                            <br>
 
+                            <br><b>[Order: Check_Order]</b><br>
+                            <input type="hidden" name="_WHAT_TO_DO" value="CHECKORDER_ORDER">
+
+
+                            <label> orderID: </label>
+                            <input type="text" name="_orderID" value="">
+                            <br>
+
+                            <input type="submit" value="서버에 요청">
+                            <br>
+                        </form>
 
                         <! 주문하기 기능 제가 할테니비워두시면 됩니다>
                         <! order - Do Order>
 
 
+
                         <! order - Cancel Order>
                         <! 주문번호만 전송>
+                        <form action="server_test.php" method="post">
+                            <br>
 
+                            <br><b>[Order: Cancel_Order]</b><br>
+                            <input type="hidden" name="_WHAT_TO_DO" value="CANCELORDER_ORDER">
+
+
+                            <label> orderID: </label>
+                            <input type="text" name="_orderID" value="">
+                            <br>
+
+                            <input type="submit" value="서버에 요청">
+                            <br>
+                        </form>
 
                         <! 여기까지가 끝이고 external Module은 작성하지 않습니다>
                         <! 수고하셨습니다>
