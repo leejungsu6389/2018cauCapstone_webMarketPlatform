@@ -1,0 +1,34 @@
+﻿
+
+<body>
+    <div>
+        <! User - Account Module>
+
+        <! Account - Quit>
+        <! 사용자 ID, 비번 전송>
+        <form action="server_test.php" method="post">
+            <br>
+
+            <br><b>[Account: Quit]</b><br>
+            <input type="hidden" name="_WHAT_TO_DO" value="QUIT_ACCOUNT">
+
+
+            <label> userID: </label>
+            <input type="text" name="_userID" value="">
+            <br>
+
+            <label> pswd: </label>
+            <input type="text" name="_pswd" value="">
+            <br>
+
+            <label> 개인정보 파기에 동의합니다.(동의 입력): </label>
+            <input type="text" name="_signature" value="">
+            <br>
+
+            <input type="submit" value="서버에 요청">
+            <br>
+        </form>
+    </div>
+
+
+</body>
