@@ -1,0 +1,46 @@
+﻿
+
+<body>
+    <div>
+        <! Admin - Item Management Module>
+        <! Admin Page의 Item management 모듈의 Add 기능>
+        <form action="server_test.php" method="post">
+            <br>
+
+            <br><b>[Item Management: Add]</b><br>
+            <! 받는 쪽에서 적당히 알아서 parsing 할테니 이름은 적절히 이런식으로 보내주시면 됩니다>
+            <input type="hidden" name="_WHAT_TO_DO" value="ADD_ITEM">
+
+            <! 설계문서 데이터베이스 설계 참고>
+            <! 각 Attribute들 속성에 해당하는 인풋 상자들을 만들어주세요>
+            <! 이름은 가급적 설계문서에 있는 것으로 부탁드립니다>
+            <! 언더바 + Attribute이름>
+            <label> itemID: </label>
+            <input type="text" name="_itemID" value="">
+            <br>
+            <label> itemName: </label>
+            <input type="text" name="_itemName" value="">
+            <br>
+            <label> price </label>
+            <input type="text" name="_price" value="">
+            <br>
+            <label> categoryID </label>
+            <input type="text" name="_category" value="">
+            <br>
+
+            <label> description </label>
+            <input type="text" name="_description" value="">
+            <br>
+
+            <label> company </label>
+            <input type="text" name="_company" value="">
+            <br>
+
+            <input type="submit" value="서버에 요청">
+            <br>
+            <! 여기까지가 한 기능단위 끝>
+        </form>
+    </div>
+
+
+</body>

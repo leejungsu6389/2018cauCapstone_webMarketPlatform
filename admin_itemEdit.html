@@ -1,0 +1,46 @@
+﻿
+
+<body>
+    <div>
+        <! Admin - Item Management Module>
+        <! Admin Page의 Item management 모듈의 Edit 기능>
+        <form action="server_test.php" method="post">
+            <br>
+
+            <br><b>[Item Management: Edit]</b><br>
+            <input type="hidden" name="_WHAT_TO_DO" value="EDIT_ITEM">
+
+
+            <! 물품 정보 변경>
+            <label> 기존itemID: </label>
+            <input type="text" name="_org_itemID" value="">
+            <br>
+            <br>
+            <label> itemID: </label>
+            <input type="text" name="_itemID" value="">
+            <br>
+            <label> itemName: </label>
+            <input type="text" name="_itemName" value="">
+            <br>
+            <label> price </label>
+            <input type="text" name="_price" value="">
+            <br>
+            <label> category </label>
+            <input type="text" name="_category" value="">
+            <br>
+
+            <label> description </label>
+            <input type="text" name="_description" value="">
+            <br>
+
+            <label> company </label>
+            <input type="text" name="_company" value="">
+            <br>
+
+            <input type="submit" value="서버에 요청">
+            <br>
+        </form>
+    </div>
+
+
+</body>
