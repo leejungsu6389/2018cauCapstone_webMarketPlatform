@@ -151,6 +151,9 @@
       
       var_export($ids);
       var_export($pswds);
+      
+      print $ids[0];
+      print $pswds[0];
          
       $stmt->close();
       
