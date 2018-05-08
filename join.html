@@ -1,0 +1,151 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        header {
+            border-bottom: 1px solid gray;
+        }
+
+        .menu {
+            height: 50px;
+            width: 50px;
+            border: 1px solid black;
+        }
+
+        .container {
+            margin: 10px;
+            height: 150px;
+            display: flex;
+            flex-direction: row;
+        }
+
+        .item {
+            background-color: tomato;
+            color: white;
+            border: 1px solid white;
+        }
+
+            .item:nth-child(1) {
+                /*padding-left: 20px;*/
+                flex-basis: 150px;
+                flex-shrink: 0;
+            }
+
+            .item:nth-child(2) {
+                flex-basis: 450px;
+                flex-shrink: 0;
+            }
+
+            .item:nth-child(3) {
+                flex-basis: 450px;
+                flex-shrink: 0;
+            }
+
+
+
+
+/*--------------------body Ω√¿€--------------------*/
+        #title{
+            font-size:70px;
+            text-align:center;
+        }
+        .content {
+            margin: 10px;
+            display: flex;
+            flex-direction: row;
+        }
+
+        .main {
+            height: 600px;
+            display: flex;
+            flex-direction: row;
+            margin: 10px;
+            position: relative;
+            top: 10px;
+        }
+
+        .main_info {
+            color: white;
+            border: 1px solid white;
+            background-color: tomato;
+            flex-basis: 1050px;
+        }
+
+        
+
+        .agreement {
+            height: 200px;
+            background-color: tomato;
+            color: white;
+            border: 1px solid white;
+        }
+
+        .personal_info {
+            height: 200px;
+            background-color: tomato;
+            color: white;
+            border: 1px solid white;
+        }
+        .question {
+            height: 200px;
+            background-color: tomato;
+            color: white;
+            border: 1px solid white;
+        }
+
+        
+
+       
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="menu">
+            menu
+        </div>
+        <div class="container">
+            <div class="item">Site Name</div>
+            <div class="item">SPECIAL</div>
+            <div class="item">ITEM</div>
+        </div>
+    </header>
+
+
+
+
+
+    <section class="content">
+        <main>
+
+            <div id="title">JOIN</div>
+
+            <div class="main">
+
+                <div class="main_info">
+                    <div class="agreement">(agreement_info)</div>
+
+                    <div class="personal_info">
+                        (personal information)
+                    </div>
+
+                    <div class="question">
+                        (questions)
+                    </div>
+                </div>
+
+              
+            </div>
+
+
+
+
+        </main>
+    </section>
+
+
+
+</body>
+
+</html>
