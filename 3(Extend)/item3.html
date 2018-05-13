@@ -1,0 +1,184 @@
+﻿<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        header {
+            border-bottom: 1px solid gray;
+        }
+
+        .menu {
+            height: 50px;
+            width: 50px;
+            border: 1px solid black;
+        }
+
+        .container {
+            margin: 10px;
+            height: 150px;
+            display: flex;
+            flex-direction: row;
+        }
+
+        .item {
+            background-color: tomato;
+            color: white;
+            border: 1px solid white;
+        }
+
+            .item:nth-child(1) {
+                /*padding-left: 20px;*/
+                flex-basis: 150px;
+                flex-shrink: 0;
+            }
+
+            .item:nth-child(2) {
+                flex-basis: 450px;
+                flex-shrink: 0;
+            }
+
+            .item:nth-child(3) {
+                flex-basis: 450px;
+                flex-shrink: 0;
+            }
+
+        .content {
+            margin: 10px;
+            display: flex;
+            flex-direction: row;
+        }
+
+        .main {
+            height: 500px;
+            display: flex;
+            flex-direction: row;
+            margin: 10px;
+            position: relative;
+            top: 10px;
+        }
+
+        .main_info {
+            color: white;
+            border: 1px solid white;
+        }
+
+            .main_info:nth-child(1) {
+                background-color: tomato;
+                flex-basis: 700px;
+            }
+
+            .main_info:nth-child(2) {
+                background-color: green;
+                flex-basis: 350px;
+            }
+
+        .item_pic {
+            height: 200px;
+            background-color: tomato;
+            color: white;
+            border: 1px solid white;
+        }
+
+        .bottom_info {
+            height: 100px;
+            background-color: tomato;
+            color: white;
+            border: 1px solid white;
+        }
+
+        .side_info {
+            height: 50px;
+            background-color: green;
+            color: white;
+            border: 1px solid white;
+        }
+
+        .addition_info {
+            background-color: gray;
+            color: white;
+            border: 1px solid black;
+            margin: 10px;
+            display: flex;
+            flex-direction: row;
+            position: relative;
+            top: 30px;
+            height: 200px;
+            text-align: center;
+        }
+
+        .addition_pic {
+            color: white;
+            border: 1px solid white;
+            flex-basis: 525px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="menu">
+            menu
+        </div>
+        <div class="container">
+            <div class="item">Site Name</div>
+            <div class="item">SPECIAL</div>
+            <div class="item">ITEM</div>
+        </div>
+    </header>
+
+    <section class="content">
+        <main>
+
+
+            <div class="main">
+
+                <div class="main_info">
+                    <div class="item_pic">pic 1</div>
+                    <div class="item_pic">pic 2</div>
+
+                    <div class="bottom_info">review</div>
+                </div>
+
+                <div class="main_info">
+
+                    <div class="side_info">(name)</div>
+                    <div class="side_info">(explain)</div>
+                    <div class="side_info">(price)</div>
+                    <div class="side_info">(sale info)</div>
+                    <div class="side_info">(item code)</div>
+                    <div class="side_info">(color option)</div>
+                    <div class="side_info">(size option)</div>
+                    <div class="side_info">(total price)</div>
+                    <div class="side_info">buy now</div>
+                    <div class="side_info">add to cart</div>
+
+                </div>
+            </div>
+
+
+
+            <div class="addition_info">
+                <div class="addition_pic">pic1</div>
+                <div class="addition_pic">pic2</div>
+            </div>
+
+            <div class="addition_info">
+                (washing infomation)
+            </div>
+
+            <div class="addition_info">
+                (delivery infomation)
+            </div>
+            <div class="addition_info">
+                (another info)
+            </div>
+
+
+        </main>
+    </section>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,284 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        header {
+            border-bottom: 1px solid gray;
+        }
+
+        footer {
+            border-top: 1px solid gray;
+        }
+
+        .menu {
+            height: 50px;
+            width: 50px;
+            border: 1px solid black;
+        }
+
+        .container {
+            margin: 10px;
+            height: 150px;
+            display: flex;
+            flex-direction: row;
+        }
+
+        .item {
+            background-color: tomato;
+            color: white;
+            border: 1px solid white;
+        }
+
+            .item:nth-child(1) {
+                /*padding-left: 20px;*/
+                flex-basis: 150px;
+                flex-shrink: 0;
+            }
+
+            .item:nth-child(2) {
+                flex-basis: 450px;
+                flex-shrink: 0;
+            }
+
+            .item:nth-child(3) {
+                flex-basis: 450px;
+                flex-shrink: 0;
+            }
+
+        .content {
+            margin: 10px;
+            display: flex;
+            flex-direction: row;
+        }
+
+            .content aside {
+                margin: 20px;
+                border: 1px solid gray;
+                flex-basis: 150px;
+                flex-shrink: 0;
+            }
+
+        .search {
+            display: flex;
+        }
+
+        .input {
+            border: 2px solid black;
+        }
+
+            .input:nth-child(1) {
+                flex-basis: 950px;
+            }
+
+            .input:nth-child(2) {
+                flex-basis: 100px;
+                flex-shrink: 0;
+            }
+
+        .main_pic {
+            height: 200px;
+            display: flex;
+            flex-direction: row;
+            position: relative;
+            top: 10px;
+        }
+
+        .pic {
+            background-color: tomato;
+            color: white;
+            border: 1px solid white;
+        }
+
+            .pic:nth-child(1) {
+                flex-basis: 350px;
+            }
+
+            .pic:nth-child(2) {
+                flex-basis: 350px;
+            }
+
+            .pic:nth-child(3) {
+                flex-basis: 350px;
+            }
+
+        .ranking_name {
+            background-color: gray;
+            color: white;
+            border: 1px solid black;
+            position: relative;
+            top: 20px;
+            text-align: center;
+        }
+
+        .best_pic {
+            position: relative;
+            top: 10px;
+            background-color: gray;
+            color: white;
+            border: 1px solid white;
+        }
+
+            .best_pic:nth-child(1) {
+                flex-basis: 175px;
+            }
+
+            .best_pic:nth-child(2) {
+                flex-basis: 175px;
+            }
+
+            .best_pic:nth-child(3) {
+                flex-basis: 175px;
+            }
+
+            .best_pic:nth-child(4) {
+                flex-basis: 175px;
+            }
+
+            .best_pic:nth-child(5) {
+                flex-basis: 175px;
+            }
+
+            .best_pic:nth-child(6) {
+                flex-basis: 175px;
+            }
+
+        .side {
+            height: 100px;
+            background-color: green;
+            color: white;
+            border: 1px solid white;
+        }
+
+        .more {
+            height: 20px;
+            background-color: gray;
+            color: white;
+            border: 1px solid white;
+        }
+
+        .ending {
+            background-color: gray;
+            color: white;
+            position: relative;
+            top: 10px;
+            flex-basis: 200px;
+            border: 1px solid white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="menu">
+            menu
+        </div>
+        <div class="container">
+            <div class="item">Site Name</div>
+            <div class="item">SPECIAL</div>
+            <div class="item">ITEM</div>
+        </div>
+    </header>
+
+    <section class="content">
+        <main>
+            <div class="search">
+                <div class="input">Search</div>
+                <div class="input">Click</div>
+            </div>
+
+            <div class="main_pic">
+                <div class="pic">pic1</div>
+                <div class="pic">pic2</div>
+                <div class="pic">pic3</div>
+            </div>
+            <div class="main_pic">
+                <div class="pic">
+                (color)<br>
+                (size)<br>
+                (price)
+                </div>
+                <div class="pic">
+                (color)<br>
+                (size)<br>
+                (price)
+                </div>
+                <div class="pic">
+                (color)<br>
+                (size)<br>
+                (price)
+                </div>
+            </div>
+
+            <div class="ranking_name">
+                ranking best
+            </div>
+
+            <div class="main_pic">
+                <div class="best_pic">Ranking1</div>
+                <div class="best_pic">Ranking2</div>
+                <div class="best_pic">Ranking3</div>
+                <div class="best_pic">Ranking4</div>
+                <div class="best_pic">Ranking5</div>
+                <div class="best_pic">Ranking6</div>
+            </div>
+            <div class="main_pic">
+                <div class="best_pic">
+                (color)<br>
+                (size)<br>
+                (price)
+                </div>
+                <div class="best_pic">
+                (color)<br>
+                (size)<br>
+                (price)
+                </div>
+                <div class="best_pic">
+                (color)<br>
+                (size)<br>
+                (price)
+                </div>
+                <div class="best_pic">
+                (color)<br>
+                (size)<br>
+                (price)
+                </div>
+                <div class="best_pic">
+                (color)<br>
+                (size)<br>
+                (price)
+                </div>
+                <div class="best_pic">
+                (color)<br>
+                (size)<br>
+                (price)
+                </div>
+            </div>
+        </main>
+        <aside>
+            <div class="side">
+                <div class="side">pic1</div>
+                <div class="side">pic2</div>
+                <div class="side">pic3</div>
+                <div class="side">pic4</div>
+                <div class="more">more</div>
+            </div>
+        </aside>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="ending">
+                (company name)<br>
+                (CEO name)<br>
+                (CED phone number)
+            </div>
+            <div class="ending">(address)</div>
+            <div class="ending">(company number)</div>
+            <div class="ending">(etc)</div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
