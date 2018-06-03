@@ -26,9 +26,12 @@
       $itemO->setItemName($_POST["_itemName"]);
       $itemO->setPrice($_POST["_price"]);
       $itemO->setCategory($_POST["_category"]);
-      $itemO->setCompany($_POST["_description"]);
-      $itemO->setDescription($_POST["_company"]);
-  
+      $itemO->setCompany($_POST["_company"]);
+      $itemO->setDescription($_POST["_description"]);
+      $itemO->setDescription2($_POST["_description2"]);
+      $itemO->setDescription3($_POST["_description3"]);
+    
+      $d = date('Y-m-d H:i:s', time());
   
       echo "<br/>----------Unit Test----------";
 	    echo "<br/>"."What To Do: ".$_WHAT_TO_DO;
@@ -38,6 +41,11 @@
 	    echo "<br/>".$itemO->getCategory();
 	    echo "<br/>".$itemO->getCompany();
 	    echo "<br/>".$itemO->getDescription();
+	    echo "<br/>".$itemO->getDescription2();
+	    echo "<br/>".$itemO->getDescription3();
+    
+	    echo "<br/>".$d;
+      
       
       
       /* import db connection header */
@@ -46,16 +54,16 @@
       
       /* using prepared statement */
       /* block the SQL injection */
-      $sql = "INSERT INTO item(itemID, itemName, price, category, description, company, img_path) 
-              VALUES(?, ?, ?, ?, ?, ?, ?)";
+      $sql = "INSERT INTO item(itemID, itemName, price, category, description, description2, description3, company, date) 
+              VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
   
       /* prepare */
       $stmt = $s->prepare($sql);
       
       /* bind */
-      $stmt->bind_param("isissss", 
-                        $b_id, $b_name, $b_price, $b_category, $b_description,
-                        $b_company, $b_img_path);
+      $stmt->bind_param("isissssss", 
+                        $b_id, $b_name, $b_price, $b_category, $b_description, $b_description2, $b_description3,
+                        $b_company, $b_d);
                         
       /* set parameters */
       $b_id = $itemO->getItemID();  
@@ -63,10 +71,12 @@
       $b_price = $itemO->getPrice();  
       $b_category = $itemO->getCategory();  
       $b_description = $itemO->getDescription();  
-      
+      $b_description2 = $itemO->getDescription2();  
+      $b_description3 = $itemO->getDescription3();  
       $b_company = $itemO->getCompany();  
-      $b_img_path = "nothing yet";  
+      $b_d = $d;
       
+
       /* execute */
       $stmt->execute();
       

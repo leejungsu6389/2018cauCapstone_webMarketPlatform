@@ -8,6 +8,7 @@
   require_once("./admin_itemManagement.php");
   require_once("./admin_membershipManagement.php");
   require_once("./admin_orderManagement.php");
+  require_once("./admin_categoryManagement.php");
   
   require_once("./user_account.php");
   require_once("./user_order.php");
@@ -25,6 +26,7 @@
   exec_admin_itemManagement($_WHAT_TO_DO);
   exec_admin_membershipManagement($_WHAT_TO_DO);
   exec_admin_orderManagement($_WHAT_TO_DO);
+  exec_admin_addCategory($_WHAT_TO_DO);
   
   exec_user_account($_WHAT_TO_DO);
   exec_user_order($_WHAT_TO_DO);
