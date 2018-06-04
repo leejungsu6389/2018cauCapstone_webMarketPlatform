@@ -2,7 +2,7 @@
    if (function_exists("mb_http_input")) mb_http_input("utf-8"); 
    if (function_exists("mb_http_output")) mb_http_output("utf-8");
 ?>
-<? include "./KSPayWebHost.inc"; ?>
+<? include "./KSPayWebHost4.inc"; ?>
 <?
     $rcid       = $_POST["reWHCid"];
     $rctype     = $_POST["reWHCtype"];
@@ -23,9 +23,6 @@
 	$aqucd		= "";
 	$temp_v		= "";
 	$result		= "";
-	$halbu		= "";
-	$cbtrno		= "";
-	$cbauthno		= "";
 
 	$resultcd =  "";
 
@@ -50,10 +47,7 @@
 		$aqucd	 = $ipg->kspay_get_value("aqucd" );
 		$temp_v	 = "";
 		$result	 = $ipg->kspay_get_value("result");
-		$halbu	 = $ipg->kspay_get_value("halbu");
-		$cbtrno	 = $ipg->kspay_get_value("cbtrno");
-		$cbauthno	 = $ipg->kspay_get_value("cbauthno");
-		
+
 		if (!empty($msg1)) $msg1 = iconv("EUC-KR","UTF-8", $msg1);
 		if (!empty($msg2)) $msg2 = iconv("EUC-KR","UTF-8", $msg2);
 
@@ -80,18 +74,20 @@
 <link href="http://kspay.ksnet.to/store/KSPayFlashV1.3/mall/css/pgstyle.css" rel="stylesheet" type="text/css" charset="euc-kr">
 </head>
 <script language="javascript">
-// 현금영수증 출력 스크립트
-function CashreceiptView(tr_no)
-{
-    receiptWin = "http://pgims.ksnet.co.kr/pg_infoc/src/bill/ps2.jsp?s_pg_deal_numb="+tr_no;
-    window.open(receiptWin , "" , "scrollbars=no,width=434,height=580");
-}
 // 신용카드 영수증 출력 스크립트
 function receiptView(tr_no)
 {
-	receiptWin = "http://pgims.ksnet.co.kr/pg_infoc/src/bill/credit_view.jsp?tr_no="+tr_no;
+	receiptWin = "http://nims.ksnet.co.kr/pg_infoc/src/bill/credit_view.jsp?tr_no="+tr_no;
     window.open(receiptWin , "" , "scrollbars=no,width=434,height=700");
 }
+
+// 현금영수증 출력 스크립트
+function CashreceiptView(tr_no)
+{
+    receiptWin = "http://nims.ksnet.co.kr/pg_infoc/src/bill/ps1.jsp?s_pg_deal_numb="+tr_no;
+    window.open(receiptWin , "" , "scrollbars=no,width=434,height=580");
+}
+
 -->
 </script>
 
@@ -123,13 +119,12 @@ function receiptView(tr_no)
 						{
 							switch (substr($result,0,1))
 							{
-								case '1' : echo("신용카드"); break;
-								case 'I' : echo("신용카드"); break;
-								case '2' : echo("실시간계좌이체"); break;
-								case '6' : echo("가상계좌발급"); break; 
-								case 'M' : echo("휴대폰결제"); break; 
-								case 'G' : echo("상품권"); break; 
-								default  : echo("(????)"); break; 
+								case '1' : echo("신용카드"			); break;
+								case 'I' : echo("신용카드"			); break;
+								case '2' : echo("실시간계좌이체"	); break;
+								case '6' : echo("가상계좌발급"		); break; 
+								case 'M' : echo("휴대폰결제"		); break; 
+								default  : echo("(????)"			); break; 
 							}
 						}
 ?>
@@ -179,36 +174,11 @@ function receiptView(tr_no)
           </tr>
           <tr bgcolor="#E3E3E3"> <td height="1" colspan="2"></td> </tr>
 <? } ?>
-          <tr bgcolor="#FFFFFF">
-            <td width="120"><img src="http://kspay.ksnet.to/store/KSPayFlashV1.3/mall/imgs/ico_right.gif" width="11" height="11" align="absmiddle"> 발급사코드/가상계좌번호/계좌이체번호</td>
-            <td width="280"><?echo($isscd)?></td>
-          </tr>
-          <tr bgcolor="#E3E3E3"> <td height="1" colspan="2"></td> </tr>
-          <tr bgcolor="#FFFFFF">
-            <td width="120"><img src="http://kspay.ksnet.to/store/KSPayFlashV1.3/mall/imgs/ico_right.gif" width="11" height="11" align="absmiddle"> 매입사코드</td>
-            <td width="280"><?echo($aqucd)?></td>
-          </tr>
-          <tr bgcolor="#E3E3E3"> <td height="1" colspan="2"></td> </tr>
-          <tr bgcolor="#FFFFFF">
-            <td width="120"><img src="http://kspay.ksnet.to/store/KSPayFlashV1.3/mall/imgs/ico_right.gif" width="11" height="11" align="absmiddle"> 메시지1</td>
-            <td width="280"><?echo($msg1)?></td>
-          </tr>
-          <tr bgcolor="#E3E3E3"> <td height="1" colspan="2"></td> </tr>
-          <tr bgcolor="#FFFFFF">
-            <td width="120"><img src="http://kspay.ksnet.to/store/KSPayFlashV1.3/mall/imgs/ico_right.gif" width="11" height="11" align="absmiddle"> 메시지2</td>
-            <td width="280"><?echo($msg2)?></td>
-          </tr>
-          <tr bgcolor="#E3E3E3"> <td height="1" colspan="2"></td> </tr>
+         
 
 		<? if (!empty($authyn) && "O" == $authyn && "1" == substr($trno,0,1)) { ?> <!-- 정상승인의 경우만 영수증출력: 신용카드의 경우만 제공 -->
           <tr bgcolor="#FFFFFF">
             <td width="400" colspan="2" align="center"> <input type="button" value="영수증출력" onClick="javascript:receiptView('<?echo($trno)?>')"> </td>
-          </tr>
-          <tr bgcolor="#E3E3E3"> <td height="1" colspan="2"></td> </tr>
-      	<? } ?>
-      	<? if (!empty($authyn) && "O" == $authyn && "2" == substr($trno,0,1)) { ?> <!-- 정상승인의 경우만 영수증출력: 계좌이체의 경우만 제공 -->
-          <tr bgcolor="#FFFFFF">
-            <td width="400" colspan="2" align="center"> <input type="button" value="현금영수증출력" onClick="javascript:CashreceiptView('<?echo($cbtrno)?>')"> </td>
           </tr>
           <tr bgcolor="#E3E3E3"> <td height="1" colspan="2"></td> </tr>
       	<? } ?>

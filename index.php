@@ -463,7 +463,7 @@
 
 	     <div class='prod_details_tab'>
 		 
-		 <a href='#' class='prod_buy'>구매하기</a> 
+		 <a href='index.php?doOrder=1' class='prod_buy'>구매하기</a> 
           
          <a href='index.php?clearCart=1' class='prod_details'>비우기</a> </div>
 
