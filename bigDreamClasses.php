@@ -156,6 +156,9 @@
 		private $category;
 		private $company;
 		private $description;
+		private $description2;
+		private $description3;
+		private $img;
 	
 
     function __constructor(){
@@ -185,7 +188,16 @@
     
 		public function setDescription($input){
 			$this->description = $input;
+		}    
+    
+		public function setDescription2($input){
+			$this->description2 = $input;
+		}    
+    
+		public function setDescription3($input){
+			$this->description3 = $input;
 		}
+    
 		
     
     public function getItemID(){
@@ -209,6 +221,13 @@
 		public function getDescription(){
 			return $this->description;
 		}
+		public function getDescription2(){
+			return $this->description2;
+		}
+		public function getDescription3(){
+			return $this->description3;
+		}
+    
 	}
 
 

@@ -117,7 +117,7 @@
               echo '<li class="divider"></li>';
 			  echo '<li><a href="index_admin.php?menu=modComInfo" class="nav">물품 갱신</a></li>';
               echo '<li class="divider"></li>';
-			  echo '<li><a href="index_admin.php?menu=modComInfo" class="nav">물품 삭제</a></li>';
+			  echo '<li><a href="index_admin.php?menu=itemList" class="nav">물품 목록</a></li>';
               echo '<li class="divider"></li>';
             }
 
@@ -292,6 +292,13 @@
 					<button>보내기</button>
 					</form>
 				";
+			}
+
+			/* 아이템 목록 조회 */
+			else if($qr == "itemList"){
+
+				require("./h_showItemList.php");
+
 			}
 		}
 

@@ -43,20 +43,7 @@
       
       $userO->setPoint($init_p);
   
-  
-      /*
-      echo "<br/>----------Unit Test----------";
-	    echo "<br/>"."What To Do: ".$_WHAT_TO_DO;
-	    echo "<br/>".$userO->getID();
-	    echo "<br/>".$userO->getPswd();
-	    echo "<br/>".$userO->getDate();
-	    echo "<br/>".$userO->getName();
-	    echo "<br/>".$userO->getZipCode();
-	    echo "<br/>".$userO->getAddress();
-	    echo "<br/>".$userO->getEmail();
-	    echo "<br/>".$userO->getTelNum();
-	    echo "<br/>".$userO->getPoint();
-      */
+
       
       
       /* import db connection header */
@@ -172,6 +159,88 @@
   
   
     }
+    else if($_WHAT_TO_DO == 'SHOW_ACCOUNT'){
+    
+
+    
+      /* create new object */
+      $userO = new User();
+    
+      /* set object member variable */
+      $userO->setID($_POST["_userID"]);
+      $userO->setPswd($_POST["_pswd"]);
+  
+  
+
+      
+      
+      /* import db connection header */
+      require_once("./db_connect.php");
+      
+      /* using prepared statement */
+      /* block the SQL injection */
+      $sql = "SELECT * 
+              FROM user 
+              WHERE userID = ? AND pswd = ?";
+  
+      /* prepare */
+      $stmt = $s->prepare($sql);
+      
+      /* bind */
+      $stmt->bind_param("ss", $b_id, $b_pswd);
+                        
+      /* set parameters */
+      $b_id = $userO->getID();  
+      $b_pswd = $userO->getPswd();
+      
+      /* execute */
+      $stmt->execute();
+      
+      /* get result */
+      $result = $stmt->get_result();
+      
+      if($result->num_rows==0){
+      
+        echo"
+        <script>
+          alert('비밀번호가 틀립니다.');
+          location.href='index.php?menu=myinfo';
+        </script>
+      
+      ";
+      
+      }
+      
+      while($row = $result->fetch_assoc()){
+      
+					$na[] = $row['name'];
+					$zc[] = $row['zipCode'];
+					$ad[] = $row['address'];
+					$em[] = $row['email'];
+					$te[] = $row['telNum'];
+      }
+      
+      
+      $stmt->close();
+      
+      /* disconnect db */ 
+      mysqli_close($s);
+      
+       $uinfo = array($na[0], $zc[0], $ad[0], $em[0], $te[0]);
+
+       
+       echo "<br/>이름: ".$na[0];
+       echo "<br/>우편: ".$zc[0];
+       echo "<br/>주소: ".$ad[0];
+       echo "<br/>이메일: ".$em[0];
+       echo "<br/>전화번호: ".$te[0];
+       
+       echo"<br/><br/>
+        
+        <a href ='javascript:history.back();'>뒤로가기</a>
+      
+      ";
+    }
 
 
     /* Account: Edit */
@@ -193,22 +262,7 @@
       $userO->setTelNum($_POST["_telNum"]);
       
 
-  
-  
-      /*
-      echo "<br/>----------Unit Test----------";
-	    echo "<br/>"."What To Do: ".$_WHAT_TO_DO;
-	    echo "<br/>".$userO->getID();
-	    echo "<br/>".$userO->getPswd();
-      
-	    echo "<br/>".$new_pswd;
-      
-	    echo "<br/>".$userO->getZipCode();
-	    echo "<br/>".$userO->getAddress();
-	    echo "<br/>".$userO->getEmail();
-	    echo "<br/>".$userO->getTelNum();
-      */
-      
+
       
       /* import db connection header */
       require_once("./db_connect.php");
@@ -249,6 +303,14 @@
       mysqli_close($s);
   
   
+      echo"
+        <script>
+          alert('회원정보 수정 완료.');
+          location.href='index.php';
+        </script>
+      
+      ";
+  
     }
 
 
@@ -265,23 +327,19 @@
       
       $sig = $_POST["_signature"];
       
-  
-      /*
-      echo "<br/>----------Unit Test----------";
-	    echo "<br/>"."What To Do: ".$_WHAT_TO_DO;
-	    echo "<br/>".$userO->getID();
-	    echo "<br/>".$userO->getPswd();
-      
-	    echo "<br/>".$new_pswd;
-      
-	    echo "<br/>".$userO->getZipCode();
-	    echo "<br/>".$userO->getAddress();
-	    echo "<br/>".$userO->getEmail();
-	    echo "<br/>".$userO->getTelNum();
-      */
-      
-      
+
+       
       if($sig == '동의'){
+     
+        /* create new object */
+        $userO = new User();
+      
+    
+        /* set object member variable */
+        $userO->setID($_POST["_userID"]);
+        $userO->setPswd($_POST["_pswd"]);
+      
+
       
         /* import db connection header */
         require_once("./db_connect.php");
@@ -289,7 +347,8 @@
       
         /* using prepared statement */
         /* block the SQL injection */
-        $sql = "DELETE FROM user
+        $sql = "UPDATE user
+                SET pswd = ?, zipCode = ?, address = ?, email = ?, telNum = ?
                 WHERE userID = ? AND pswd = ?";
   
         /* prepare */
@@ -297,13 +356,20 @@
       
       
         /* bind */
-        $stmt->bind_param("ss", 
+        $stmt->bind_param("sssssss", 
+                          $b_pswd2, $b_zipCode, $b_address, $b_email, $b_telNum,
                           $b_id, $b_pswd);
                         
         /* set parameters */
         $b_id = $userO->getID();  
         $b_pswd = $userO->getPswd();  
       
+        $b_pswd2 = ""; 
+      
+        $b_zipCode = "";      
+        $b_address = "";  
+        $b_email = "";  
+        $b_telNum = "";  
       
         /* execute */
         $stmt->execute();
@@ -313,9 +379,24 @@
         /* disconnect db */ 
         mysqli_close($s);
   
+  
+        echo"
+          <script>
+            alert('회원탈퇴 완료.');
+            location.href='index.php';
+          </script>
+      
+        ";
+  
       }
       else{
-        print "do nothing";
+         echo"
+          <script>
+            alert('서명란에 동의하지 않아 회원탈퇴가 중지됩니다.');
+            location.href='index.php';
+          </script>
+      
+        ";
       }
   
     }

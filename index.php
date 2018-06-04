@@ -2,6 +2,7 @@
 <meta charset="utf-8" />
 
 
+
 <head>
 <title>#shopNAME</title>
 <meta http-equiv="Content-Type" content="text/html; charset=windows-1252" />
@@ -62,9 +63,6 @@
               $user_name = $_SESSION['user_name'];
               echo "<p>안녕하세요. $user_name($user_id)님</p>";
               echo "<p><a href='s_logout.php'>로그아웃</a></p>";
-              echo "<br/>";
-              echo "test<br/>";
-              echo "<br/>";
             
             }
 
@@ -94,7 +92,7 @@
             
             /* 로그인 상태 */
             else{
-              echo '<li><a href="index.php?menu=myinfo" class="nav">개인정보</a></li>';
+              echo '<li><a href="index.php?menu=myinfo" class="nav">회원정보</a></li>';
               echo '<li class="divider"></li>';
               echo '<li><a href="index.php?menu=cart" class="nav">장바구니</a></li>';
               echo '<li class="divider"></li>';
@@ -109,21 +107,10 @@
     <!-- end of menu tab -->
     <div><br/></div>
 
-    <div class="left_content">
-      <div class="title_box">카테고리</div>
-      <ul class="left_menu">
-     
-        <!--get the category List from DB-->        
-        <?php 
-          require_once("./h_categoryShow.php");
-        ?>
-        
 
-      </ul>
-    </div>
-    <!-- end of left content -->
-
-
+	<?php
+		require_once("./h_show.php");
+	?>
 
 
 
@@ -140,10 +127,12 @@
 		echo "<div class='center_content'>";
 
 				if(!isset($_GET["category"])){
-					echo "카테고리안누름";
 					}
 					else{
-						echo "카테고리 누름";
+
+						$ctgr = $_GET["category"];
+
+						search_c($ctgr);
 				}
 		
 
@@ -165,84 +154,7 @@
 					</form>
 				  </div>
 
-				  				         <!--상품창-->
-      <div class='center_title_bar'>인기 상품</div>
-      <div class='prod_box'>
-        <div class='center_prod_box'>
-          <div class='product_title'><a href='#'>Makita 156 MX-VL</a></div>
-          <div class='product_img'><a href='#'><img src='images/p1.jpg' alt='' border='0' /></a></div>
-          <div class='prod_price'><span class='reduce'>350$</span> <span class='price'>270$</span></div>
-        </div>
-        <div class='prod_details_tab'> <a href='#' class='prod_buy'>Add to Cart</a> <a href='#' class='prod_details'>Details</a> </div>
-      </div>
-      <div class='prod_box'>
-        <div class='center_prod_box'>
-          <div class='product_title'><a href='#'>Bosch XC</a></div>
-          <div class='product_img'><a href='#'><img src='images/p2.jpg' alt='' border='0' /></a></div>
-          <div class='prod_price'><span class='reduce'>350$</span> <span class='price'>270$</span></div>
-        </div>
-        <div class='prod_details_tab'> <a href='#' class='prod_buy'>Add to Cart</a> <a href='#' class='prod_details'>Details</a> </div>
-      </div>
-      <div class='prod_box'>
-        <div class='center_prod_box'>
-          <div class='product_title'><a href='#'>Lotus PP4</a></div>
-          <div class='product_img'><a href='#'><img src='images/p4.jpg' alt='' border='0' /></a></div>
-          <div class='prod_price'><span class='reduce'>350$</span> <span class='price'>270$</span></div>
-        </div>
-        <div class='prod_details_tab'> <a href='#' class='prod_buy'>Add to Cart</a> <a href='#' class='prod_details'>Details</a> </div>
-      </div>
-      <div class='prod_box'>
-        <div class='center_prod_box'>
-          <div class='product_title'><a href='#'>Makita 156 MX-VL</a></div>
-          <div class='product_img'><a href='#'><img src='images/p3.jpg' alt='' border='0' /></a></div>
-          <div class='prod_price'><span class='reduce'>350$</span> <span class='price'>270$</span></div>
-        </div>
-        <div class='prod_details_tab'> <a href='#' class='prod_buy'>Add to Cart</a> <a href='#' class='prod_details'>Details</a> </div>
-      </div>
-      <div class='prod_box'>
-        <div class='center_prod_box'>
-          <div class='product_title'><a href='#'>Bosch XC</a></div>
-          <div class='product_img'><a href='#'><img src='images/p5.jpg' alt='' border='0' /></a></div>
-          <div class='prod_price'><span class='reduce'>350$</span> <span class='price'>270$</span></div>
-        </div>
-        <div class='prod_details_tab'> <a href='#' class='prod_buy'>Add to Cart</a> <a href='#' class='prod_details'>Details</a> </div>
-      </div>
-      <div class='prod_box'>
-        <div class='center_prod_box'>
-          <div class='product_title'><a href='#'>Lotus PP4</a></div>
-          <div class='product_img'><a href='#'><img src='images/p6.jpg' alt='' border='0' /></a></div>
-          <div class='prod_price'><span class='reduce'>350$</span> <span class='price'>270$</span></div>
-        </div>
-        <div class='prod_details_tab'> <a href='#' class='prod_buy'>Add to Cart</a> <a href='#' class='prod_details'>Details</a> </div>
-      </div>
 
-
-        <!--추천 상품-->
-      <div class='center_title_bar'>추천 상품</div>
-      <div class='prod_box'>
-        <div class='center_prod_box'>
-          <div class='product_title'><a href='#'>Makita 156 MX-VL</a></div>
-          <div class='product_img'><a href='#'><img src='images/p7.jpg' alt='' border='0' /></a></div>
-          <div class='prod_price'><span class='reduce'>350$</span> <span class='price'>270$</span></div>
-        </div>
-        <div class='prod_details_tab'> <a href='#' class='prod_buy'>Add to Cart</a> <a href='#' class='prod_details'>Details</a> </div>
-      </div>
-      <div class='prod_box'>
-        <div class='center_prod_box'>
-          <div class='product_title'><a href='#'>Bosch XC</a></div>
-          <div class='product_img'><a href='#'><img src='images/p1.jpg' alt='' border='0' /></a></div>
-          <div class='prod_price'><span class='reduce'>350$</span> <span class='price'>270$</span></div>
-        </div>
-        <div class='prod_details_tab'> <a href='#' class='prod_buy'>Add to Cart</a> <a href='#' class='prod_details'>Details</a> </div>
-      </div>
-      <div class='prod_box'>
-        <div class='center_prod_box'>
-          <div class='product_title'><a href='#'>Lotus PP4</a></div>
-          <div class='product_img'><a href='#'><img src='images/p3.jpg' alt='' border='0' /></a></div>
-          <div class='prod_price'><span class='reduce'>350$</span> <span class='price'>270$</span></div>
-        </div>
-        <div class='prod_details_tab'> <a href='#' class='prod_buy'>Add to Cart</a> <a href='#' class='prod_details'>Details</a> </div>
-      </div>
     </div>
     <!-- end of center content -->
 
@@ -260,6 +172,7 @@
 
 			/* 회원가입 */
 			if($qr == "join"){
+				echo "<div class='center_content'>";
 			
 				echo '            
 
@@ -271,7 +184,6 @@
 					</tr>
 					<tr>
 					<td>
-					<! Account - Join>
 					<form action="server_test.php" method="post">
 						<br>
 
@@ -323,8 +235,170 @@
 					</td>
 					</tr>
 					</table>
+
+					    </div>
+    <!-- end of center content -->
 				';
 			
+			}
+			/* 회원정보 */
+			else if($qr == "myinfo"){
+
+				$sid = $_SESSION['user_id'];
+				$sn = $_SESSION['user_name'];
+
+
+
+						
+				echo '            
+
+					<table>
+
+					<tr>
+
+					</tr>
+					<tr>
+					<td>
+					<form action="server_test.php" method="post">
+						<br>
+
+					
+						<input type="hidden" name="_WHAT_TO_DO" value="SHOW_ACCOUNT">
+
+						
+						<div class="jLabel"><label> <b>[필수 정보]</b></label></div>
+						<div class="jLabel"><label> userID: 아이디</label></div>
+						<input type="text" name="_userID" value="'.$sid.'" style=" width:200px;" readonly>
+						<br>				
+
+						<div class="jLabel"><label> name: 이름</label></div>
+						<input type="text" name="_name" value="'.$sn.'" style=" width:200px;" readonly>
+						<br>
+
+						<br>
+						<div class="jLabel"><label> <b>pswd: 비밀번호 확인</b></label></div>
+						<input type="password" name="_pswd" value="" style=" width:200px;">
+						<br>
+						<br>
+						<input type="submit" value="회원정보 확인">
+						<br>
+					</form>
+					</td>
+
+
+					</tr>
+
+
+					<tr>
+
+					</tr>
+					<tr>
+					<td>
+					<form action="server_test.php" method="post">
+						<br>
+
+					
+						<input type="hidden" name="_WHAT_TO_DO" value="EDIT_ACCOUNT">
+
+						
+						<div class="jLabel"><label> <b>[필수 정보]</b></label></div>
+						<div class="jLabel"><label> userID: 아이디</label></div>
+						<input type="text" name="_userID" value="'.$sid.'" style=" width:200px;" readonly>
+						<br>
+						<div class="jLabel"><label> <b>pswd: 비밀번호 변경</b></label></div>
+						<input type="password" name="_pswd2" value="" style=" width:200px;">
+						<br>
+
+						<br>
+						<br>
+
+						
+
+						<div class="jLabel"><label> name: 이름</label></div>
+						<input type="text" name="_name" value="'.$sn.'" style=" width:200px;" readonly>
+						<br>
+
+						<div class="jLabel"> <label> zipCode: 우편번호</label></div>
+						<input type="text" name="_zipCode" value="" style=" width:200px;">
+						<br>
+
+						<div class="jLabel"><label> address: 상세주소</label></div>
+						<input type="text" name="_address" value="" style=" width:200px;">
+						<br>
+
+						<div class="jLabel"><label> email: 이메일</label></div>
+						<input type="text" name="_email" value="" style=" width:200px;">
+						<br>
+
+						<div class="jLabel"><label> telNum: 전화번호</label></div>
+						<input type="text" name="_telNum" value="" style=" width:200px;">
+						<br>
+
+						<br>
+						<div class="jLabel"><label> <b>pswd: 비밀번호 확인</b></label></div>
+						<input type="password" name="_pswd" value="" style=" width:200px;">
+						<br>
+						<br>
+						<input type="submit" value="정보 수정하기">
+						<br>
+					</form>
+					</td>
+
+
+					</tr>
+					</table>
+				';
+
+			
+			}
+			/* 회원탈퇴 */
+			/* 이름, 이메일 등 개인정보 파기 */
+			/* 거래 내역 보존을 위해 id값을 제외하고는 전부 날려버림 */
+			else if($qr == "quit"){
+
+				$sid = $_SESSION['user_id'];
+						
+				echo '            
+
+					<table>
+					<tr>
+
+					</tr>
+					<tr>
+					<td>
+					<form action="server_test.php" method="post">
+						<br>
+
+					
+						<input type="hidden" name="_WHAT_TO_DO" value="QUIT_ACCOUNT">
+
+						
+						<div class="jLabel"><label> <b>[회원 탈퇴]</b></label></div>
+						<div class="jLabel"><label> 탈퇴 시 거래 내역을 제외한 모든 회원 정보가 파기됩니다.</label></div>
+						<br>
+						<div class="jLabel"><label> userID: 아이디</label></div>
+						<input type="text" name="_userID" value="'.$sid.'" style=" width:200px;" readonly>
+						<br>
+						<div class="jLabel"><label> <b>pswd: 비밀번호 확인</b></label></div>
+						<input type="password" name="_pswd" value="" style=" width:200px;">
+						<br>
+						<br>
+
+
+						<div class="jLabel"><label> <b>[탈퇴 서명]</b></label></div>
+						<div class="jLabel"><label> 서명란에 "동의"를 입력하세요.</label></div>
+						<input type="text" name="_signature" value="" style=" width:200px;">
+						<br>
+						<br>
+						<input type="submit" value="회원 탈퇴">
+						<br>
+					</form>
+					</td>
+
+
+					</tr>
+					</table>
+				';
 			}
 		}
 
@@ -340,7 +414,7 @@
 
         <!--장바구니-->
       <div class="shopping_cart">
-        <div class="title_box">Shopping cart</div>
+        <div class="title_box">장바구니</div>
         <div class="cart_details"> 3 items <br />
           <span class="border_cart"></span> Total: <span class="price">350$</span> </div>
         <div class="cart_icon"><a href="#"><img src="images/shoppingcart.png" alt="" width="35" height="35" border="0" /></a></div>
@@ -352,7 +426,8 @@
       </div>
 
       <!-- 광고 -->
-      <div class="banner_adds"> <a href="#"><img src="images/bann1.jpg" alt="" border="0" /></a> </div>
+	  <div class="title_box">광고 배너</div>
+      <div class="banner_adds"> <a href="addLink.com"><img src="images/add.jpg" alt="" border="0" /></a> </div>
 
       <!-- 추천 사이트 -->
       <div class="title_box">추천 사이트</div>
@@ -389,3 +464,4 @@
 <!-- end of main_container -->
 </body>
 </html>
+
