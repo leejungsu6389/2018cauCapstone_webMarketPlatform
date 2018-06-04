@@ -63,5 +63,6 @@ $user_pw = $_POST['user_pw'];
 session_start();
 $_SESSION['user_id'] = $ids[0];
 $_SESSION['user_name'] = $names[0];
+$_SESSION["itemID"];
 ?>
 <meta http-equiv='refresh' content='0;url=index.php'>

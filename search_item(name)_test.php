@@ -3,7 +3,7 @@
   /* import classes */
   require_once("./search_item(name).php");
 
- $s = "반팔";
+ $s = "10";
  
  search_item_name($s);
 
