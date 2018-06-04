@@ -214,7 +214,7 @@ function search_c($q){
     
     $start = ($page - 1)*$data_per_page;
     
-    
+    echo "<table><tr><td>";
   	echo "<div class='center_content'>
           <div class='center_title_bar'>상품 목록</div>";
     
@@ -259,8 +259,12 @@ function search_c($q){
 
   echo "<br><br>";
   
-  echo "<table><tr><td>";
+  echo "</td></tr>";
+  echo "<tr><td>";
   
+
+  
+  echo '<table class="centered"><tr><td>';
   /* make page numbers */
   for($i=1; $i <= $pageNumber; $i++){
   
@@ -271,6 +275,7 @@ function search_c($q){
     
   }
   
+  echo '</td></tr></table>';
   echo "</td></tr></table>";
   
   echo "
@@ -727,8 +732,9 @@ function show_cart($uid){
   $total = 0;
   
   for($i=0; $i < $arrLeng; $i++){
-  
-    echo "<br>".$name[$i];
+    $j = $i+1;
+      echo '<br>'.$j.'. '.$name[$i];
+    
     $total += $price[$i];
   }
   

@@ -117,8 +117,6 @@
               echo '<li class="divider"></li>';
 			  echo '<li><a href="index_admin.php?menu=modComInfo" class="nav">물품 갱신</a></li>';
               echo '<li class="divider"></li>';
-			  echo '<li><a href="index_admin.php?menu=itemList" class="nav">물품 목록</a></li>';
-              echo '<li class="divider"></li>';
             }
 
           ?>
@@ -287,10 +285,11 @@
 			/* 엑셀 물품 추가 */
 			else if($qr == "addItem"){
 				echo"
-					<form enctype='multipart/form-data' action='spreadsheet-reader-master/test.php' method='get'>
-					<input type='file' name='File'>
-					<button>보내기</button>
-					</form>
+					<table><tr><td>";
+
+					require_once("./readExcel/excelReader.php");
+
+					echo"</td></tr></table>
 				";
 			}
 

@@ -496,3 +496,7 @@ padding:10px 0 0 60px;
 .jLabel{
     width: 200px;
 }
+
+.centered { 
+	position:absolute; left:50%; 
+}

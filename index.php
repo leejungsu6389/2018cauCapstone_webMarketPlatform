@@ -506,11 +506,13 @@
 
     <!--가운데정렬하기-->
     <div class="center_footer">
-
+	
+	<table class ="centered"><tr><td>
       <!--get the company Info from DB-->
       <?php 
         require_once("./h_companyInfo.php");
-    ?>
+	 ?>
+	 </td></tr></table>
 
     </div>
   </div>
