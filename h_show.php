@@ -734,6 +734,8 @@ function show_cart($uid){
   for($i=0; $i < $arrLeng; $i++){
     $j = $i+1;
       echo '<br>'.$j.'. '.$name[$i];
+      
+      echo '<br>';
     
     $total += $price[$i];
   }
@@ -833,6 +835,11 @@ function clear_cart($uid){
 
 
 }
+
+
+
+
+
 
 
 ?>

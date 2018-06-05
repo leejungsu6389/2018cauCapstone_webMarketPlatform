@@ -36,30 +36,30 @@
             if(!isset($_SESSION['store_code']) || !isset($_SESSION['admin_name'])) {
               echo "<form method='post' action='s_login_ok_admin.php'>";
               echo "<table>";
-              echo "<tr>";
-              echo "<td>아이디</td>";
-              echo "<td>";
-              echo "<input type='text' name='user_id' tabindex='1'/>";
-              echo "</td>";
-              echo "<td rowspan='2'>";
-              echo "<input type='submit' tabindex='4' value='로그인' style='height:50px'/>";
-              echo "</td>";
-              echo "</tr>";
-              echo "<tr>";
-              echo "<td>비밀번호</td>";
-              echo "<td>";
-              echo "<input type='password' name='user_pw' tabindex='2'/>";
-              echo "</td>";
-              echo "</tr>";
-			  echo "<tr>";
-              echo "<td>상점코드</td>";
-              echo "<td>";
-              echo "<input type='text' name='store_code' tabindex='3'/>";
-              echo "</td>";
-              echo "</tr>";
 
-              echo "</table>";
-              echo "</form>";
+				echo"
+					<tr><td>
+					
+					<div class='jLabel'><label> 관리자 아이디 </label></div>
+					<input type='text' name='user_id' value='' style=' width:200px;'>
+					<br>
+
+					<div class='jLabel'><label> 비밀번호</label></div>
+					<input type='password' name='user_pw' value='' style=' width:200px;'>
+					<br>
+
+					<div class='jLabel'><label> 상점코드</label></div>
+					<input type='text' name='store_code' value='' style=' width:200px;'>
+					<br>
+
+					</td>
+						
+					<td>
+						<input type='submit' value='로그인' style='height:50px'/>
+					</td></tr></table>
+					</form>
+				";
+
             
             }
             

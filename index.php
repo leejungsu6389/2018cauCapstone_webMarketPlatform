@@ -35,25 +35,34 @@
             
             /* 세션=null 비로그인 상태 */
             if(!isset($_SESSION['user_id']) || !isset($_SESSION['user_name'])) {
-              echo "<form method='post' action='s_login_ok.php'>";
-              echo "<table>";
-              echo "<tr>";
-              echo "<td>아이디</td>";
-              echo "<td>";
-              echo "<input type='text' name='user_id' tabindex='1'/>";
-              echo "</td>";
-              echo "<td rowspan='2'>";
-              echo "<input type='submit' tabindex='3' value='로그인' style='height:50px'/>";
-              echo "</td>";
-              echo "</tr>";
-              echo "<tr>";
-              echo "<td>비밀번호</td>";
-              echo "<td>";
-              echo "<input type='password' name='user_pw' tabindex='2'/>";
-              echo "</td>";
-              echo "</tr>";
-              echo "</table>";
-              echo "</form>";
+
+				    echo "<form method='post' action='s_login_ok.php'>";
+					echo "<table>";
+
+				echo"
+					<tr><td>
+					
+					<div class='jLabel'><label> 아이디 </label></div>
+					<input type='text' name='user_id' value='' style=' width:200px;'>
+					<br>
+
+					<div class='jLabel'><label> 비밀번호</label></div>
+					<input type='password' name='user_pw' value='' style=' width:200px;'>
+					<br>
+
+
+					</td>
+						
+					<td>
+						<div class='jLabel'><label> Login </label></div>
+						<input type='submit' value='로그인' style='height:50px'/>
+					</td></tr></table>
+					</form>
+
+
+					";
+
+
             
             }
             
@@ -120,7 +129,7 @@
 		/* 초기 페이지 */
 		if(!isset($_GET["menu"])){
 		
-		echo "<div class='center_content'>
+			echo "<div class='center_content'>
 				<div class='center_title_bar'>상품 검색</div>
 				  <div>
 					<form method='get' action='index.php'>
@@ -139,14 +148,86 @@
 				  </div>
 		
 		
-		";
+			";
 
 				if(!isset($_GET["category"])){
 					
 					/* 메인 페이지 최신상품 표시 */
 					if(!isset($_GET["search"])){
+				
+
+						if(isset($_SESSION["user_id"])){
+						
+							/* 주문창 */
+							if(isset($_GET["doOrder"])){							
+								echo "<br><div class='center_title_bar'>주문 신청서</div>";
+
+								echo "<div class='center_content'>";			
+								echo '            
+								<table><tr><td>
+								<form action="server_test.php" method="post">
+								<br>
 					
-						recent_item();
+								<input type="hidden" name="_WHAT_TO_DO" value="DO_ORDER">
+
+						
+								<div class="jLabel"><label> <b>[주문자]</b></label></div>
+								<div class="jLabel"><label> id: 아이디</label></div>
+								<input type="text" name="_userID" value="'.$_SESSION["user_id"];
+								
+								echo '" style=" width:200px;"readonly>
+								<br>
+
+								<div class="jLabel"><label> name: 이름</label></div>
+								<input type="text" name="_pswd" value="'.$_SESSION["user_name"];
+								
+								echo '" style=" width:200px;">
+								<br>
+								<br>
+								<br>
+
+						
+								<div class="jLabel"><label> <b>[수령인]</b></label></div>
+
+								<div class="jLabel"><label> name: 이름</label></div>
+								<input type="text" name="_name" value="" style=" width:200px;">
+								<br>
+
+								<div class="jLabel"> <label> zipCode: 우편번호</label></div>
+								<input type="text" name="_zipCode" value="" style=" width:200px;">
+								<br>
+
+								<div class="jLabel"><label> address: 상세주소</label></div>
+								<input type="text" name="_address" value="" style=" width:200px;">
+								<br>
+
+								<div class="jLabel"><label> telNum: 전화번호</label></div>
+								<input type="text" name="_telNum" value="" style=" width:200px;">
+								<br><br>
+
+								<input type="submit" value="결제">
+								<br>
+								</form>
+								</td>
+
+								<td>
+								여기에 유저취향 체크 구현
+								</td>
+								</tr>
+								</table>
+
+								</div>
+								';
+
+							}
+							else{							
+								recent_item();
+							}
+							
+						}
+						else{
+							recent_item();
+						}
 					}
 					/* search by itemName */
 					else{
@@ -436,6 +517,7 @@
 		
 		<?php
 			if(isset($_SESSION['user_id'])){
+
 
 				/* 장바구니 비우기 */
 				if(isset($_GET["clearCart"])){
