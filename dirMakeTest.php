@@ -369,7 +369,7 @@ echo "error: ".$of;
 }   
 }
   
-$of = "kspay_wh_rcv.html";  
+$of = "kspay_wh_rcv.php";  
 $nf = "./".$inp."/".$of;
   
 if(file_exists($of)){
@@ -378,7 +378,7 @@ echo "error: ".$of;
 }   
 }
   
-$of = "kspay_wh_result.html";  
+$of = "kspay_wh_result.php";  
 $nf = "./".$inp."/".$of;
   
 if(file_exists($of)){
