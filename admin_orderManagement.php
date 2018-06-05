@@ -46,12 +46,55 @@
 	    echo "<br/>".$orderO->getOrderID();
   
     }
-    
+
     
     
     /* do order */
     else if($_WHAT_TO_DO == 'DO_ORDER'){
     
+    
+      if($_POST["_name"] == ""){
+        echo"
+          <script>
+            alert('수령인 이름이 누락되었습니다.');
+            location.href='index.php';
+          </script>
+      
+        ";      
+      }
+      
+      if($_POST["_zipCode"] == ""){
+        echo"
+          <script>
+            alert('우편번호가 누락되었습니다.');
+            location.href='index.php';
+          </script>
+      
+        ";      
+      }
+    
+      if($_POST["_address"] == ""){
+        echo"
+          <script>
+            alert('수령주소가 누락되었습니다.');
+            location.href='index.php';
+          </script>
+      
+        ";      
+      }
+
+      if($_POST["_telNum"] == ""){
+        echo"
+          <script>
+            alert('수령인 연락처가 누락되었습니다.');
+            location.href='index.php';
+          </script>
+      
+        ";      
+      }
+      
+      
+
       $uid = $_POST["_userID"];
       
       
@@ -59,6 +102,7 @@
       $rcz = $_POST["_zipCode"];
       $rca = $_POST["_address"];
       $rct = $_POST["_telNum"];
+      
       
         /* import db connection header */
       require_once("./db_connect.php");
@@ -75,9 +119,9 @@
       /* using prepared statement */
       /* block the SQL injection */
       $sql = "SELECT * 
-      FROM cart a NATURAL JOIN item b
-      WHERE a.userID = ? AND a.itemID = b.itemID
-      ORDER BY itemName ASC";
+              FROM cart a NATURAL JOIN item b
+              WHERE a.userID = ? AND a.itemID = b.itemID
+              ORDER BY itemName ASC";
   
       /* prepare */
       $stmt = $b->prepare($sql);
@@ -98,17 +142,17 @@
       
       while($row = $result->fetch_assoc()){
       
-      $id[] = $row['itemID'];
-      $name[] = $row['itemName'];
-      $price[] = $row['price'];
-      $category[] = $row['category'];
-      $company[] = $row['company'];
-      $description[] = $row['description'];
-      $description2[] = $row['description2'];
-      $description3[] = $row['description3'];
-      $d[] = $row['date'];
+        $id[] = $row['itemID'];
+        $name[] = $row['itemName'];
+        $price[] = $row['price'];
+        $category[] = $row['category'];
+        $company[] = $row['company'];
+        $description[] = $row['description'];
+        $description2[] = $row['description2'];
+        $description3[] = $row['description3'];
+        $d[] = $row['date'];
     
-      $isSoldout[] = $row['soldout'];
+        $isSoldout[] = $row['soldout'];
       }
     
       $stmt->close();
@@ -117,11 +161,11 @@
       mysqli_close($b);
    
       if(!isset($id)){  
-      $arrLeng = 0;  
+        $arrLeng = 0;  
       }
       else{  
       /*count array length*/
-      $arrLeng = count($id);
+       $arrLeng = count($id);
       }
   
   
@@ -139,8 +183,8 @@
       /* using prepared statement */
       /* block the SQL injection */
       $sql = "INSERT INTO 
-      purchase(orderID, userID, itemID, date, recvName, recvZip, recvAddr, recvTel)
-      VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
+              purchase(orderID, userID, itemID, date, recvName, recvZip, recvAddr, recvTel)
+              VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
   
       /* prepare */
       $stmt = $c->prepare($sql);
@@ -177,7 +221,16 @@
       mysqli_close($c);
       
       
-    
+       echo"
+        <script>
+          location.href='kspay_wh_order.html';
+        </script>
+      
+      ";
+      
+      
+      
+      /*
        echo"
         <script>
           alert('주문이 완료되었습니다.');
@@ -186,6 +239,7 @@
       
       ";
   
+  */
   
       
       

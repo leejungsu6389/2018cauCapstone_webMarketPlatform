@@ -248,7 +248,9 @@ function search_c($q){
           
           echo "<a href='index.php?category=".$category_name."&page=".$page."&addCart=".$idj."' class='prod_buy'>장바구니</a> 
           
-          <a href='#' class='prod_details'>Details</a> </div>
+          <a title ='상품명: ".$name[$i]."\n가격: ".$price[$i]
+          ."원\n제조사: ".$company[$i]."\n".$description[$i]." ".$description2[$i]."\n".$description3[$i]."' 
+          class ='prod_details'>상품정보</a> </div>
         </div>
        
          ";
@@ -446,7 +448,9 @@ function search_n($q){
           
           echo "<a href='index.php?search=".$nn."&page=".$page."&addCart=".$idj."' class='prod_buy'>장바구니</a> 
           
-          <a href='#' class='prod_details'>Details</a> </div>
+                    <a title ='상품명: ".$name[$i]."\n상품코드: ".$id[$i]."\n가격: ".$price[$i]
+          ."원\n제조사: ".$company[$i]."\n".$description[$i]."\n".$description2[$i]."\n".$description3[$i]."' 
+          class ='prod_details'>상품정보</a> </div>
         </div>
        
          ";
@@ -633,7 +637,9 @@ function recent_item(){
           <div class='prod_details_tab'>";
           
           echo "<a href='index.php?addCart=".$idj."' class='prod_buy'>장바구니</a> 
-         <a href='#' class='prod_details'>Details</a> </div>
+                   <a title ='상품명: ".$name[$i]."\n상품코드: ".$id[$i]."\n가격: ".$price[$i]
+          ."원\n제조사: ".$company[$i]."\n".$description[$i]."\n".$description2[$i]."\n".$description3[$i]."' 
+          class ='prod_details'>상품정보</a> </div>
          
         </div>
        
@@ -836,6 +842,135 @@ function clear_cart($uid){
 
 }
 
+
+
+
+
+
+/* 주문 조회 */
+function show_order($uid){
+  
+  /* 1. 주문 물품, 날짜, 수령인정보 뽑기 */
+  /* connect to mysql */
+  $e = new mysqli(DB_SERVER, DB_USER, DB_PSWD, DB_NAME);
+  
+  if($e->connect_error){
+    die("connection failed: ". $e->connect_error);
+  }
+
+      
+  /* using prepared statement */
+  /* block the SQL injection */
+  $sql = "SELECT * 
+          FROM purchase a NATURAL JOIN user b
+          WHERE a.userID = b.userID AND a.userID = ?
+          ORDER BY a.date DESC";
+  
+  /* prepare */
+  $stmt = $e->prepare($sql);
+      
+  /* bind */
+  $stmt->bind_param("s", $b_id);
+  
+          
+    /* set parameters */
+    $b_id = $uid;  
+      
+    /* execute */
+    $stmt->execute();
+      
+    /* get result */
+    $result = $stmt->get_result();
+      
+      
+    while($row = $result->fetch_assoc()){
+    
+      $id[] = $row['itemID'];      
+      $d[] = $row['date'];
+      
+      $rcvn[] = $row['recvName'];
+      $rcvz[] = $row['recvZip'];
+      $rcva[] = $row['recvAddr'];
+      $rcvt[] = $row['recvTel'];
+    
+    }
+         
+    $stmt->close();
+      
+    /* disconnect db */ 
+    mysqli_close($e);
+    
+    
+  if(!isset($id)){  
+    $arrLeng = 0;  
+  }
+  else{  
+    /*count array length*/
+    $arrLeng = count($id);
+  }
+  
+  
+  /* 2. itemID에 해당하는 상품명, 가격 뽑기 */
+    $f = new mysqli(DB_SERVER, DB_USER, DB_PSWD, DB_NAME);
+  
+  if($f->connect_error){
+    die("connection failed: ". $f->connect_error);
+  }
+
+      
+  /* using prepared statement */
+  /* block the SQL injection */
+  $sql = "SELECT * 
+          FROM item
+          WHERE itemID = ?";
+  
+  /* prepare */
+  $stmt = $f->prepare($sql);
+       
+  /* bind */
+  $stmt->bind_param("s", $b_id);
+  
+  echo "<table><tr><td><b>상품명</b></td><td>가격</td><td>수령인</td><td>우편번호</td><td>주소</td><td>연락처</td>";
+  
+  echo "</td></tr>";
+  
+  for($i=0; $i < $arrLeng; $i++){
+            
+      /* set parameters */
+      $b_id = $id[$i];  
+      
+      /* execute */
+      $stmt->execute();
+      
+      /* get result */
+      $result = $stmt->get_result();
+      
+      
+      while($row = $result->fetch_assoc()){
+    
+        $nm[] = $row['itemName'];      
+        $pr[] = $row['price'];
+    
+      }
+      echo "<tr><td>".$nm[$i]."</td><td>".$pr[$i]."</td><td>".$rcvn[$i]."</td><td>".$rcvz[$i]."</td><td>".$rcva[$i]
+      ."</td><td>".$rcvt[$i];
+    
+    
+    }
+         
+    $stmt->close();
+      
+    /* disconnect db */ 
+    mysqli_close($f);
+  
+
+    echo "</td></tr></table>";
+  
+  
+  
+
+
+}
 
 
 

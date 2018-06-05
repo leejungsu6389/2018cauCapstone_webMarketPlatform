@@ -2,6 +2,11 @@
    if (function_exists("mb_http_input")) mb_http_input("euc-kr"); 
    if (function_exists("mb_http_output")) mb_http_output("euc-kr");
 ?>
+
+        <script>
+          location.href='index.php?clearCart=1';
+        </script>
+      
 <?
     $rcid       = $_POST["reCommConId"];
     $rctype     = $_POST["reCommType"];

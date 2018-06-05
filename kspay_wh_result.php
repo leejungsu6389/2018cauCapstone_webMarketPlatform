@@ -174,7 +174,26 @@ function CashreceiptView(tr_no)
           </tr>
           <tr bgcolor="#E3E3E3"> <td height="1" colspan="2"></td> </tr>
 <? } ?>
-         
+          <tr bgcolor="#FFFFFF">
+            <td width="120"><img src="http://kspay.ksnet.to/store/KSPayFlashV1.3/mall/imgs/ico_right.gif" width="11" height="11" align="absmiddle"> 발급사코드/가상계좌번호/계좌이체번호</td>
+            <td width="280"><?echo($isscd)?></td>
+          </tr>
+          <tr bgcolor="#E3E3E3"> <td height="1" colspan="2"></td> </tr>
+          <tr bgcolor="#FFFFFF">
+            <td width="120"><img src="http://kspay.ksnet.to/store/KSPayFlashV1.3/mall/imgs/ico_right.gif" width="11" height="11" align="absmiddle"> 매입사코드</td>
+            <td width="280"><?echo($aqucd)?></td>
+          </tr>
+          <tr bgcolor="#E3E3E3"> <td height="1" colspan="2"></td> </tr>
+          <tr bgcolor="#FFFFFF">
+            <td width="120"><img src="http://kspay.ksnet.to/store/KSPayFlashV1.3/mall/imgs/ico_right.gif" width="11" height="11" align="absmiddle"> 메시지1</td>
+            <td width="280"><?echo($msg1)?></td>
+          </tr>
+          <tr bgcolor="#E3E3E3"> <td height="1" colspan="2"></td> </tr>
+          <tr bgcolor="#FFFFFF">
+            <td width="120"><img src="http://kspay.ksnet.to/store/KSPayFlashV1.3/mall/imgs/ico_right.gif" width="11" height="11" align="absmiddle"> 메시지2</td>
+            <td width="280"><?echo($msg2)?></td>
+          </tr>
+          <tr bgcolor="#E3E3E3"> <td height="1" colspan="2"></td> </tr>
 
 		<? if (!empty($authyn) && "O" == $authyn && "1" == substr($trno,0,1)) { ?> <!-- 정상승인의 경우만 영수증출력: 신용카드의 경우만 제공 -->
           <tr bgcolor="#FFFFFF">
