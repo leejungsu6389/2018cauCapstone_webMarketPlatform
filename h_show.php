@@ -230,11 +230,11 @@ function search_c($q){
             /* 상품명 */
             $namej = $name[$i];
             echo $namej."</a></div>
-            <div class='product_img'><a href='#'><img src='images/"; 
+            <div class='product_img'><a href='#'><img src='"; echo "./images/"; 
           
             /* 상품id */
             $idj = $id[$i];
-            echo "$idj".".jpg' alt='' border='0' /></a></div>
+            echo "$idj".".png' alt='' border='0' /></a></div>
             <div class='prod_price'><span class='price'>";
             
             /* 상품 가격 */
@@ -433,11 +433,11 @@ function search_n($q){
             /* 상품명 */
             $namej = $name[$i];
             echo $namej."</a></div>
-            <div class='product_img'><a href='#'><img src='images/"; 
+            <div class='product_img'><a href='#'><img src='"; echo "./images/"; 
           
             /* 상품id */
             $idj = $id[$i];
-            echo "$idj".".jpg' alt='' border='0' /></a></div>
+            echo "$idj".".png' alt='' border='0' width= '93' height = '71' /></a></div>
             <div class='prod_price'><span class='price'>";
             
             /* 상품 가격 */
@@ -625,11 +625,11 @@ function recent_item(){
             /* 상품명 */
             $namej = $name[$i];
             echo $namej."</a></div>
-            <div class='product_img'><a href='#'><img src='images/"; 
+            <div class='product_img'><a href='#'><img src='"; echo "./images/"; 
           
             /* 상품id */
             $idj = $id[$i];
-            echo "$idj".".jpg' alt='' border='0' /></a></div>
+            echo "$idj".".png' alt='' border='0' /></a></div>
             <div class='prod_price'><span class='price'>";
             
             /* 상품 가격 */
@@ -980,6 +980,63 @@ function show_order($uid){
 
 }
 
+
+
+
+
+
+
+
+
+
+
+/* 관심사항 넣기 */
+function add_UQ($uid, $a1, $a2, $a3, $a4, $a5){
+  
+  /* connect to mysql */
+  $aa = new mysqli(DB_SERVER, DB_USER, DB_PSWD, DB_NAME);
+  
+  if($aa->connect_error){
+    die("connection failed: ". $aa->connect_error);
+  }
+
+      
+  /* using prepared statement */
+  /* block the SQL injection */
+  $sql = "INSERT  
+          INTO user_interest(userID, m1, m2, m3, m4, m5)
+          VALUES(?, ?, ?, ?, ?, ?)";
+  
+  /* prepare */
+  $stmt = $aa->prepare($sql);
+      
+  /* bind */
+  $stmt->bind_param("ssssss", $b_uid, $b1, $b2, $b3, $b4, $b5);
+  
+
+  /* set parameters */
+  $b_uid = $uid;  
+  $b1 = $a1;
+  $b2 = $a2;
+  $b3 = $a3;
+  $b4 = $a4;
+  $b5 = $a5;
+  
+      
+  /* execute */
+  $stmt->execute();
+
+
+         
+  $stmt->close();
+      
+  /* disconnect db */ 
+  mysqli_close($aa);
+  
+  
+
+
+}
 
 
 

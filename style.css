@@ -175,16 +175,6 @@ text-decoration:line-through;
 span.price{
 color: #ff8a00;
 }
-/*----------newsletter--------------*/
-input.newsletter_input{
-width:150px;
-height:16px;
-border:1px #ddd9d9 solid;
-margin:10px 0 5px 0;
-font-size:12px;
-padding:3px;
-color:#999999;
-}
 a.join{
 width:17px;
 display:block;
@@ -202,7 +192,7 @@ padding:10px 0 10px 0;
 .oferta{
 width:585px;
 height:156px;
-background:url(images/slider_bg.gif) no-repeat center;
+background:url(images/slider_bg2.gif) no-repeat center;
 float:left;
 padding:0px;
 margin:0 0 5px 5px;

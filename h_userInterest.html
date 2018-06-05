@@ -1,0 +1,158 @@
+﻿<html>
+<head>
+
+    <style>
+        .main {
+            text-align: center;
+            width: 50%;
+            position: relative;
+            left: 25%;
+        }
+
+        .container {
+            margin: 20px;
+            display: flex;
+            flex-direction: row;
+        }
+
+        .item {
+            background-color: white;
+            color: black;
+            border: 1px solid black;
+        }
+
+            .item:nth-child(1) {
+                /*padding-left: 20px;*/
+                flex-basis: 300px;
+                flex-shrink: 0;
+            }
+
+            .item:nth-child(2) {
+                flex-basis: 300px;
+                flex-shrink: 0;
+            }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="container">
+            <div class="item">
+
+                <form method="get" action="ttest.php">
+                    <br><br>
+                    1<br>
+                    락 <input type="radio" name="1" value="rock">
+                    발라드 <input type="radio" name="1" value="balad">
+                    선택포기 <input type="radio" name="1" value="abandonment"><br><br>
+
+
+                    2<br>
+                    독서 <input type="radio" name="2" value="book">
+                    산책 <input type="radio" name="2" value="walk">
+                    선택포기 <input type="radio" name="2" value="abandonment"><br><br>
+
+                    3<br>
+                    산 <input type="radio" name="3" value="book">
+                    바다 <input type="radio" name="3" value="walk">
+                    선택포기 <input type="radio" name="3" value="abandonment"><br><br>
+
+                    4<br>
+                    여름 <input type="radio" name="4" value="rock">
+                    겨울 <input type="radio" name="4" value="balad">
+                    선택포기 <input type="radio" name="4" value="abandonment"><br><br>
+
+                    5<br>
+                    육류 <input type="radio" name="5" value="rock">
+                    어류 <input type="radio" name="5" value="balad">
+                    선택포기 <input type="radio" name="5" value="abandonment"><br><br>
+
+                    6<br>
+                    안드로이드 <input type="radio" name="6" value="rock">
+                    애플 <input type="radio" name="6" value="balad">
+                    선택포기 <input type="radio" name="6" value="abandonment"><br><br>
+
+                    7<br>
+                    일식 <input type="radio" name="7" value="rock">
+                    양식 <input type="radio" name="7" value="balad">
+                    선택포기 <input type="radio" name="7" value="abandonment"><br><br>
+
+                    8<br>
+                    영화 <input type="radio" name="8" value="rock">
+                    드라마 <input type="radio" name="8" value="balad">
+                    선택포기 <input type="radio" name="8" value="abandonment"><br><br>
+
+                    9<br>
+                    커피 <input type="radio" name="9" value="rock">
+                    차 <input type="radio" name="9" value="balad">
+                    선택포기 <input type="radio" name="9" value="abandonment"><br><br>
+
+                    10<br>
+                    부먹 <input type="radio" name="10" value="rock">
+                    찍먹 <input type="radio" name="10" value="balad">
+                    선택포기 <input type="radio" name="10" value="abandonment"><br><br>
+
+
+                    <br><br>
+                    11<br>
+                    강아지 <input type="radio" name="11" value="rock">
+                    고양이 <input type="radio" name="11" value="balad">
+                    선택포기 <input type="radio" name="11" value="abandonment"><br><br>
+
+                    12<br>
+                    캐쥬얼 <input type="radio" name="12" value="rock">
+                    포멀 <input type="radio" name="12" value="balad">
+                    선택포기 <input type="radio" name="12" value="abandonment"><br><br>
+
+                    13<br>
+                    액션영화 <input type="radio" name="13" value="rock">
+                    멜로영화 <input type="radio" name="13" value="balad">
+                    선택포기 <input type="radio" name="13" value="abandonment"><br><br>
+
+                    14<br>
+                    뜨거운 아메리카노 <input type="radio" name="14" value="rock">
+                    아이스 아메리카노 <input type="radio" name="14" value="balad">
+                    선택포기 <input type="radio" name="14" value="abandonment"><br><br>
+
+                    15<br>
+                    만화책 <input type="radio" name="15" value="rock">
+                    소설책 <input type="radio" name="15" value="balad">
+                    선택포기 <input type="radio" name="15" value="abandonment"><br><br>
+
+                    16<br>
+                    콜라 <input type="radio" name="16" value="rock">
+                    사이다 <input type="radio" name="16" value="balad">
+                    선택포기 <input type="radio" name="16" value="abandonment"><br><br>
+
+                    17<br>
+                    코카콜라 <input type="radio" name="17" value="rock">
+                    펩시 <input type="radio" name="17" value="balad">
+                    선택포기 <input type="radio" name="17" value="abandonment"><br><br>
+
+                    18<br>
+                    짜장 <input type="radio" name="18" value="rock">
+                    짬뽕 <input type="radio" name="18" value="balad">
+                    선택포기 <input type="radio" name="18" value="abandonment"><br><br>
+
+                    19<br>
+                    물냉 <input type="radio" name="19" value="rock">
+                    비냉 <input type="radio" name="19" value="balad">
+                    선택포기 <input type="radio" name="19" value="abandonment"><br><br>
+
+                    20<br>
+                    군만두 <input type="radio" name="20" value="rock">
+                    물만두 <input type="radio" name="20" value="balad">
+                    선택포기 <input type="radio" name="20" value="abandonment"><br><br>
+
+
+                    <input type="submit" value='제출'>
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+
+</body>
+
+</html>

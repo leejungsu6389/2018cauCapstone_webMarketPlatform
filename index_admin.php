@@ -112,7 +112,7 @@
               echo '<li class="divider"></li>';
               echo '<li><a href="index_admin.php?menu=delC" class="nav">카테고리삭제</a></li>';
               echo '<li class="divider"></li>';
-			  echo '<li><a href="index_admin.php?menu=delC" class="nav">주문조회</a></li>';
+			  echo '<li><a href="index_admin.php?menu=orderCheck" class="nav">주문조회</a></li>';
               echo '<li class="divider"></li>';
 			  echo '<li><a href="index_admin.php?menu=swapLogo" class="nav">로고변경</a></li>';
               echo '<li class="divider"></li>';
@@ -121,6 +121,8 @@
 			  echo '<li><a href="index_admin.php?menu=addItem" class="nav">물품 추가</a></li>';
               echo '<li class="divider"></li>';
 			  echo '<li><a href="index_admin.php?menu=modItem" class="nav">물품 수정</a></li>';
+              echo '<li class="divider"></li>';
+			  echo '<li><a href="index_admin.php?menu=addImg" class="nav">이미지 등록</a></li>';
               echo '<li class="divider"></li>';
 
 
@@ -136,7 +138,7 @@
      
 				<!--get the category List from DB-->        
 				<?php 
-				require_once("./h_categoryShow.php");
+					require_once("./h_categoryShow.php");
 				?>
         
 
@@ -179,6 +181,16 @@
 			echo "<div class='center_content'>";
 
 			$qr = $_GET["menu"];
+
+			/* 주문 조회 */
+			if($qr == "orderCheck"){
+			
+				require_once("./h_show_adminOrder.php");
+				
+				show_orderA(1);
+			
+			}
+
 
 
 			/* 카테고리 추가 */
@@ -301,7 +313,7 @@
 				echo"엑셀(xlsx) 파일을 이용하여 물품을 등록해주세요.<br>
 					<table><tr><td>";
 
-					require_once("./readExcel/excelReader.php");
+					require_once("../readExcel/excelReader.php");
 
 					echo"</td></tr></table>
 				";
@@ -312,7 +324,25 @@
 				echo"엑셀(xlsx) 파일을 이용하여 물품을 수정해주세요.<br>
 					<table><tr><td>";
 
-					require_once("./readExcel/excelReader_EDIT.php");
+					require_once("../readExcel/excelReader_EDIT.php");
+
+					echo"</td></tr></table>
+				";
+
+			}			
+			/* 물품 사진 등록 */
+			else if($qr == "addImg"){
+				echo"사진의 이름은 아이템번호와 동일해야하며 png만 지원합니다.<br>
+					<table><tr><td>";
+
+
+									echo"
+					<form enctype='multipart/form-data' action='h_imgupload.php' method='post'>
+					<input type='file' name='myfile'>
+					<button>보내기</button>
+					</form>
+				";
+
 
 					echo"</td></tr></table>
 				";

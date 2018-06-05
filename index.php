@@ -105,6 +105,8 @@
               echo '<li class="divider"></li>';
               echo '<li><a href="index.php?menu=uorder" class="nav">주문조회</a></li>';
               echo '<li class="divider"></li>';
+              echo '<li><a href="index.php?menu=userQ" class="nav">설문조사</a></li>';
+              echo '<li class="divider"></li>';
               echo '<li><a href="index.php?menu=quit" class="nav">회원탈퇴</a></li>';
             }
 
@@ -157,6 +159,76 @@
 				
 
 						if(isset($_SESSION["user_id"])){
+
+
+							/* 큐레이팅(설문조사) */
+							if(isset($_GET["UQ"])){
+
+							
+								/* 예외 처리 */
+								if(!isset($_GET["1"])){
+
+									  echo"
+										<script>
+										  alert('모든 설문을 클릭해주세요');
+										  location.href='index.php';
+										</script>
+      
+									  ";								
+								}
+								if(!isset($_GET["2"])){
+
+									  echo"
+										<script>
+										  alert('모든 설문을 클릭해주세요');
+										  location.href='index.php';
+										</script>
+      
+									  ";								
+								}
+								if(!isset($_GET["3"])){
+
+									  echo"
+										<script>
+										  alert('모든 설문을 클릭해주세요');
+										  location.href='index.php';
+										</script>
+      
+									  ";								
+								}
+								if(!isset($_GET["4"])){
+
+									  echo"
+										<script>
+										  alert('모든 설문을 클릭해주세요');
+										  location.href='index.php';
+										</script>
+      
+									  ";								
+								}
+								if(!isset($_GET["5"])){
+
+									  echo"
+										<script>
+										  alert('모든 설문을 클릭해주세요');
+										  location.href='index.php';
+										</script>
+      
+									  ";								
+								}
+
+								add_UQ($_SESSION["user_id"], $_GET["1"], $_GET["2"], $_GET["3"], $_GET["4"], $_GET["5"]);
+
+								echo"
+								<script>
+									alert('설문에 감사드립니다.');
+									location.href='index.php';
+								</script>
+      
+								";				
+							}
+
+
 						
 							/* 주문창 */
 							if(isset($_GET["doOrder"])){							
@@ -218,9 +290,6 @@
 								';
 
 							}
-							else{							
-								recent_item();
-							}
 							
 						}
 						else{
@@ -255,6 +324,10 @@
 
 
 			";
+
+			
+
+
 			
 		}
 
@@ -263,6 +336,65 @@
 		else {
 
 			$qr = $_GET["menu"];
+
+
+			/* 큐레이팅(설문조사) */
+			if($qr == "userQ"){
+				echo "<div class='center_content'>";
+			
+				echo '            
+
+					<table>
+					<tr>
+					<td>
+
+					<form method="get" action="index.php">
+
+					<input type="hidden" name="UQ" value="1">
+                    <br><br>
+                    1<br>
+                    락 <input type="radio" name="1" value="rock">
+                    발라드 <input type="radio" name="1" value="balad">
+                    선택포기 <input type="radio" name="1" value="abandonment"><br><br>
+
+
+                    2<br>
+                    독서 <input type="radio" name="2" value="book">
+                    산책 <input type="radio" name="2" value="walk">
+                    선택포기 <input type="radio" name="2" value="abandonment"><br><br>
+
+                    3<br>
+                    산 <input type="radio" name="3" value="mountain">
+                    바다 <input type="radio" name="3" value="sea">
+                    선택포기 <input type="radio" name="3" value="abandonment"><br><br>
+
+                    4<br>
+                    여름 <input type="radio" name="4" value="sunny">
+                    겨울 <input type="radio" name="4" value="winter">
+                    선택포기 <input type="radio" name="4" value="abandonment"><br><br>
+
+                    5<br>
+                    육류 <input type="radio" name="5" value="meat">
+                    어류 <input type="radio" name="5" value="fish">
+                    선택포기 <input type="radio" name="5" value="abandonment"><br><br>
+
+					
+                    <input type="submit" value="제출">
+                </form>
+						
+					</td>
+					</tr>
+					</table>
+
+					    </div>
+    <!-- end of center content -->
+				';
+			
+			}
+
+
+
+
 
 
 			/* 회원가입 */
@@ -274,7 +406,6 @@
 					<table>
 					<tr>
 					<td>
-						여기에 약관 구현
 					</td>
 					</tr>
 					<tr>
@@ -325,10 +456,16 @@
 					</form>
 					</td>
 
-					<td>
-						여기에 유저취향 체크 구현
-					</td>
+
 					</tr>
+					<tr><td>
+					';
+
+					
+						require_once("./rule.html");
+
+					echo'
+					</td></tr>
 					</table>
 
 					    </div>
@@ -574,14 +711,14 @@
       <!-- 추천 사이트 -->
       <div class="title_box">추천 사이트</div>
       <ul class="left_menu">
-        <li class="odd"><a href="#">Bosch</a></li>
-        <li class="even"><a href="#">Samsung</a></li>
-        <li class="odd"><a href="#">Makita</a></li>
-        <li class="even"><a href="#">LG</a></li>
-        <li class="odd"><a href="#">Fujitsu Siemens</a></li>
-        <li class="even"><a href="#">Motorola</a></li>
-        <li class="odd"><a href="#">Phillips</a></li>
-        <li class="even"><a href="#">Beko</a></li>
+        <li class="odd"><a href="#">-</a></li>
+        <li class="even"><a href="#">-</a></li>
+        <li class="odd"><a href="#">-</a></li>
+        <li class="even"><a href="#">-</a></li>
+        <li class="odd"><a href="#">-</a></li>
+        <li class="even"><a href="#">-</a></li>
+        <li class="odd"><a href="#">-</a></li>
+        <li class="even"><a href="#">-</a></li>
       </ul>
 
     </div>
