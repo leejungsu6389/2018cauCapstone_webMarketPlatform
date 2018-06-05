@@ -1,7 +1,6 @@
 ﻿<!DOCTYPE html>
 <meta charset="utf-8" />
 
-
 <head>
 <title>#shopNAME</title>
 <meta http-equiv="Content-Type" content="text/html; charset=windows-1252" />
@@ -11,6 +10,10 @@
 
 <script type="text/javascript" src="js/boxOver.js"></script>
 </head>
+
+<?php 
+	require_once("./db_connect.php");
+?>
 
 
 <body>
@@ -94,8 +97,12 @@
             
             /* 세션=null 비로그인 상태 */
             if(!isset($_SESSION['store_code']) || !isset($_SESSION['admin_name'])) {
-
-              echo '관리자 로그인 안된 상태 아무 표시도 없어야함';
+				echo'
+					</ul>
+					</div>
+					<!-- end of menu tab -->
+				';
+              
             }
             
             /* 로그인 상태 */
@@ -107,38 +114,42 @@
               echo '<li class="divider"></li>';
 			  echo '<li><a href="index_admin.php?menu=delC" class="nav">주문조회</a></li>';
               echo '<li class="divider"></li>';
-			  echo '<li><a href="index_admin.php?menu=delC" class="nav">주문취소</a></li>';
-              echo '<li class="divider"></li>';
 			  echo '<li><a href="index_admin.php?menu=swapLogo" class="nav">로고변경</a></li>';
               echo '<li class="divider"></li>';
 			  echo '<li><a href="index_admin.php?menu=modComInfo" class="nav">하단정보변경</a></li>';
               echo '<li class="divider"></li>';
 			  echo '<li><a href="index_admin.php?menu=addItem" class="nav">물품 추가</a></li>';
               echo '<li class="divider"></li>';
-			  echo '<li><a href="index_admin.php?menu=modComInfo" class="nav">물품 갱신</a></li>';
+			  echo '<li><a href="index_admin.php?menu=modItem" class="nav">물품 수정</a></li>';
               echo '<li class="divider"></li>';
+
+
+				echo'
+				</ul>
+				</div>
+				<!-- end of menu tab -->
+				<div><br/></div>
+
+				<div class="left_content">
+				<div class="title_box">카테고리</div>
+				<ul class="left_menu">
+     
+				<!--get the category List from DB-->        
+				<?php 
+				require_once("./h_categoryShow.php");
+				?>
+        
+
+				</ul>
+				</div>
+				<!-- end of left content -->
+
+				';
+
+
             }
 
           ?>
-      </ul>
-    </div>
-    <!-- end of menu tab -->
-    <div><br/></div>
-
-    <div class="left_content">
-      <div class="title_box">카테고리</div>
-      <ul class="left_menu">
-     
-        <!--get the category List from DB-->        
-        <?php 
-          require_once("./h_categoryShow.php");
-        ?>
-        
-
-      </ul>
-    </div>
-    <!-- end of left content -->
-
 
 
 
@@ -163,6 +174,9 @@
 
 		/* 세부 페이지 */
 		else {
+
+		
+			echo "<div class='center_content'>";
 
 			$qr = $_GET["menu"];
 
@@ -284,10 +298,21 @@
 			}
 			/* 엑셀 물품 추가 */
 			else if($qr == "addItem"){
-				echo"
+				echo"엑셀(xlsx) 파일을 이용하여 물품을 등록해주세요.<br>
 					<table><tr><td>";
 
 					require_once("./readExcel/excelReader.php");
+
+					echo"</td></tr></table>
+				";
+			}
+
+			/* 엑셀 물품 편집 */
+			else if($qr == "modItem"){
+				echo"엑셀(xlsx) 파일을 이용하여 물품을 수정해주세요.<br>
+					<table><tr><td>";
+
+					require_once("./readExcel/excelReader_EDIT.php");
 
 					echo"</td></tr></table>
 				";
@@ -348,6 +373,8 @@
 				$v = "<?php\n";
 				fwrite($f, $v);
 
+				
+
 				$v = "echo '".$_POST["cName"]."'.'<br/>'".";\n";
 				fwrite($f, $v);
 				$v = "echo '".$_POST["cAddr"]."'.'<br/>'".";\n";
@@ -356,6 +383,8 @@
 				fwrite($f, $v);
 				$v = "echo '".$_POST["cBank"]."'.'<br/>'".";\n";
 				fwrite($f, $v);
+
+				
 
 				$v = "\n?>";
 				fwrite($f, $v);

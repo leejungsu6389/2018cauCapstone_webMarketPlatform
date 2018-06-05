@@ -500,3 +500,7 @@ padding:10px 0 0 60px;
 .centered { 
 	position:absolute; left:50%; 
 }
+
+.makeMG {
+	margin: 4px;
+}

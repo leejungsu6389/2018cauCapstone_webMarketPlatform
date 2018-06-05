@@ -248,10 +248,10 @@ function search_c($q){
           
           echo "<a href='index.php?category=".$category_name."&page=".$page."&addCart=".$idj."' class='prod_buy'>장바구니</a> 
           
-          <a title ='상품명: ".$name[$i]."\n가격: ".$price[$i]
-          ."원\n제조사: ".$company[$i]."\n".$description[$i]." ".$description2[$i]."\n".$description3[$i]."' 
+           <a title ='상품명: ".$name[$i]."\n상품코드: ".$id[$i]."\n가격: ".$price[$i]
+          ."원\n제조사: ".$company[$i]."\n".$description[$i]."\n".$description2[$i]."\n".$description3[$i]."' 
           class ='prod_details'>상품정보</a> </div>
-        </div>
+          </div>
        
          ";
        
@@ -265,8 +265,8 @@ function search_c($q){
   echo "<tr><td>";
   
 
-  
   echo '<table class="centered"><tr><td>';
+  
   /* make page numbers */
   for($i=1; $i <= $pageNumber; $i++){
   
@@ -278,7 +278,7 @@ function search_c($q){
   }
   
   echo '</td></tr></table>';
-  echo "</td></tr></table>";
+  echo "</td></tr></table>>";
   
   echo "
          </div>";
@@ -418,7 +418,8 @@ function search_n($q){
     
     
   	echo "<div class='center_content'>
-          <div class='center_title_bar'>상품 목록</div>";
+          <div class='center_title_bar'>상품 목록</div>
+          <table><tr><td>";
     
     for($i=$start; $i < $start + $data_per_page; $i++){
     
@@ -459,9 +460,10 @@ function search_n($q){
        
      }
 
-  echo "<br><br>";
-  
-  echo "<table><tr><td>";
+  echo "</td></tr><br><br>";
+ 
+  echo "<tr><td>";
+  echo "<table class='centered'><tr><td>";
   
   /* make page numbers */
   for($i=1; $i <= $pageNumber; $i++){
@@ -473,6 +475,7 @@ function search_n($q){
     
   }
   
+  echo "</td></tr></table>";
   echo "</td></tr></table>";
   
   echo "
@@ -637,7 +640,7 @@ function recent_item(){
           <div class='prod_details_tab'>";
           
           echo "<a href='index.php?addCart=".$idj."' class='prod_buy'>장바구니</a> 
-                   <a title ='상품명: ".$name[$i]."\n상품코드: ".$id[$i]."\n가격: ".$price[$i]
+                    <a title ='상품명: ".$name[$i]."\n상품코드: ".$id[$i]."\n가격: ".$price[$i]
           ."원\n제조사: ".$company[$i]."\n".$description[$i]."\n".$description2[$i]."\n".$description3[$i]."' 
           class ='prod_details'>상품정보</a> </div>
          
@@ -930,7 +933,10 @@ function show_order($uid){
   /* bind */
   $stmt->bind_param("s", $b_id);
   
-  echo "<table><tr><td><b>상품명</b></td><td>가격</td><td>수령인</td><td>우편번호</td><td>주소</td><td>연락처</td>";
+  echo "<div class='center_content'><div class='center_title_bar'>상품 목록</div>";
+  
+  echo "<table><tr><td><b>상품명</b></td><td><b>가격</b></td><td><b>수령인</b></td>
+  <td><b>우편번호</b></td><td><b>주소</b></td><td><b>연락처</b></td><td><b>날짜</b>";
   
   echo "</td></tr>";
   
@@ -952,9 +958,9 @@ function show_order($uid){
         $pr[] = $row['price'];
     
       }
-      echo "<tr><td>".$nm[$i]."</td><td>".$pr[$i]."</td><td>".$rcvn[$i]."</td><td>".$rcvz[$i]."</td><td>".$rcva[$i]
-      ."</td><td>".$rcvt[$i];
-    
+        echo "<tr><td>".$nm[$i]."</td><td>".$pr[$i]."</td><td>".$rcvn[$i]."</td><td>"
+        .$rcvz[$i]."</td><td>".$rcva[$i]."</td><td>".$rcvt[$i]."</td><td>".$d[$i];
+
     
     }
          
@@ -964,7 +970,9 @@ function show_order($uid){
     mysqli_close($f);
   
 
-    echo "</td></tr></table>";
+    echo "</td></tr></table>
+    
+    </div>";
   
   
   

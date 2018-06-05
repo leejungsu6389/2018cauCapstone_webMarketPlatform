@@ -565,7 +565,7 @@
 		<tr><td>
       <!-- 광고 -->
 	  <div class="title_box">광고 배너</div>
-      <div class="banner_adds"> <a href="addLink.com"><img src="images/add.jpg" alt="" border="0" /></a> </div>
+      <div class="#"> <a href="addLink.com"><img src="images/add.jpg" alt="" border="0" /></a> </div>
 
 		</td></tr>
 
